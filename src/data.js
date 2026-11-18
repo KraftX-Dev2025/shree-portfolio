@@ -14,6 +14,15 @@ window.SITE = {
   ]
 };
 
+/* ---------- "Download my memory" card ----------
+   Traits are scored out of 10 and drawn as a radar. Edit freely. */
+window.PERSONA = {
+  traits: [["Builder", 10], ["Curiosity", 10], ["Comedy", 8], ["Discipline", 8], ["Tech", 9], ["Taste", 8], ["Wanderlust", 8], ["Spirit", 7]],
+  core: ["Origami", "Robocon", "75 Hard", "KraftX", "Ashwathhama", "250 people · 19 minutes"],
+  banter: "Never thought I'd end up in your Downloads folder too.",
+  url: "shree-hypercurator-and-serial-chiller.vercel.app"
+};
+
 /* ---------- Memory graph ----------
    Each node: id, label, note (shown in side panel), parent.
    Clicking a node reveals its children. */

@@ -20,15 +20,13 @@ for (const [id, p] of Object.entries(st.pos)) if (notes[id]) [notes[id].x, notes
 
 for (const [k, c] of Object.entries(window.CLUSTERS)) {
   const el = document.createElement("div"); el.className = "cl"; el.textContent = c.label; el.style.left = c.x + "px"; el.style.top = c.y + "px"; layer.append(el);
-  const s = document.createElement("span"); s.className = "c-" + k; s.textContent = c.label; $("#legend").append(s);
 }
 
 const els = {};
 const render = (n) => {
   const el = document.createElement("div");
   el.className = "note c-" + n.c + (n.c === "you" ? " mine" : ""); el.dataset.id = n.id;
-  el.style.transform = `rotate(${((n.id.charCodeAt(n.id.length - 1) % 5) - 2) * .8}deg)`;
-  el.innerHTML = `<p></p><div class="ft"><span class="who"></span><button type="button" class="pl">♥ resonates</button></div><span class="h" title="Drag onto another note to connect"></span>${n.c === "you" ? '<button class="x" type="button" aria-label="Remove">×</button>' : ""}`;
+  el.innerHTML = `<p></p><div class="ft"><span class="who"></span><button type="button" class="pl">resonates</button></div><span class="h" title="Drag onto another note to connect"></span>${n.c === "you" ? '<button class="x" type="button" aria-label="Remove">×</button>' : ""}`;
   el.querySelector("p").textContent = n.text;
   el.querySelector(".who").textContent = n.c === "you" ? (n.name ? "— " + n.name : "— you") : n.date;
   el.querySelector(".pl").classList.toggle("on", !!st.plus[n.id]);
@@ -50,23 +48,26 @@ wires.addEventListener("click", (e) => { const i = e.target.dataset?.i; if (i ==
 
 /* ---- camera ---- */
 let cam = { x: 0, y: 0, k: 1 };
-const applyCam = () => { layer.style.transform = `translate(${cam.x}px, ${cam.y}px) scale(${cam.k})`; board.style.backgroundPosition = `${cam.x}px ${cam.y}px`; board.style.backgroundSize = `${28 * cam.k}px ${28 * cam.k}px`; };
+const applyCam = () => { layer.style.transform = `translate(${cam.x}px, ${cam.y}px) scale(${cam.k})`; board.style.backgroundPosition = `${cam.x}px ${cam.y}px`; board.style.backgroundSize = `${32 * cam.k}px ${32 * cam.k}px`; };
 const fit = () => {
   const xs = Object.values(notes).map((n) => n.x), ys = Object.values(notes).map((n) => n.y);
   const minX = Math.min(...xs) - 40, minY = Math.min(...ys) - 90, maxX = Math.max(...xs) + 280, maxY = Math.max(...ys) + 220;
   const W = board.clientWidth, H = board.clientHeight;
-  const left = !$("#intro").hidden && W > 900 ? 390 : 0, Wa = W - left;
-  cam.k = Math.min(1, Math.max(.3, Math.min(Wa / (maxX - minX), (H - 80) / (maxY - minY))));
-  cam.x = left + (Wa - (maxX - minX) * cam.k) / 2 - minX * cam.k; cam.y = (H - 80 - (maxY - minY) * cam.k) / 2 - minY * cam.k + 10;
+  const tb = document.querySelector(".title").getBoundingClientRect(), top = tb.bottom - board.getBoundingClientRect().top + 24, left = 0, Wa = W;
+  cam.k = Math.min(1, Math.max(.3, Math.min(Wa / (maxX - minX), (H - top - 60) / (maxY - minY))));
+  cam.x = left + (Wa - (maxX - minX) * cam.k) / 2 - minX * cam.k; cam.y = top + (H - top - 60 - (maxY - minY) * cam.k) / 2 - minY * cam.k;
   applyCam();
 };
 const zoomAt = (f, sx, sy) => { const k = Math.min(2, Math.max(.25, cam.k * f)); cam.x = sx - (sx - cam.x) * (k / cam.k); cam.y = sy - (sy - cam.y) * (k / cam.k); cam.k = k; applyCam(); };
 const world = (e) => { const r = board.getBoundingClientRect(); return [(e.clientX - r.left - cam.x) / cam.k, (e.clientY - r.top - cam.y) / cam.k]; };
 
 /* ---- pointer handling: pan, drag note, drag wire ---- */
-let mode = null;
+let mode = null, pinch = null;
+const pts = new Map();
 board.addEventListener("pointerdown", (e) => {
-  if (e.target.closest("button, .bar, .intro, a")) return;
+  if (e.target.closest("button, .ctrl, a")) return;
+  pts.set(e.pointerId, [e.clientX, e.clientY]);
+  if (pts.size === 2) { const [a, b] = [...pts.values()]; pinch = { d: Math.hypot(a[0] - b[0], a[1] - b[1]) }; mode = null; board.classList.remove("panning"); return; }
   const noteEl = e.target.closest(".note");
   board.setPointerCapture(e.pointerId);
   if (e.target.classList.contains("h")) { const id = noteEl.dataset.id; mode = { t: "wire", id }; live = { from: center(id), to: world(e) }; }
@@ -75,6 +76,9 @@ board.addEventListener("pointerdown", (e) => {
 });
 let hoverTarget = null;
 board.addEventListener("pointermove", (e) => {
+  if (pts.has(e.pointerId)) pts.set(e.pointerId, [e.clientX, e.clientY]);
+  if (pinch && pts.size === 2) { const [a, b] = [...pts.values()], d = Math.hypot(a[0] - b[0], a[1] - b[1]), r = board.getBoundingClientRect();
+    zoomAt(d / pinch.d, (a[0] + b[0]) / 2 - r.left, (a[1] + b[1]) / 2 - r.top); pinch.d = d; return; }
   if (!mode) return;
   if (mode.t === "pan") { cam.x = mode.cx + e.clientX - mode.sx; cam.y = mode.cy + e.clientY - mode.sy; applyCam(); }
   else if (mode.t === "note") { const [wx, wy] = world(e); mode.n.x = wx - mode.dx; mode.n.y = wy - mode.dy; place(els[mode.n.id], mode.n); drawWires(); }
@@ -85,7 +89,8 @@ board.addEventListener("pointermove", (e) => {
     if (hoverTarget !== tid) { hoverTarget && els[hoverTarget]?.classList.remove("target"); hoverTarget = tid; tid && els[tid].classList.add("target"); }
   }
 });
-const end = () => {
+const end = (e) => {
+  pts.delete(e.pointerId); if (pts.size < 2) pinch = null;
   if (!mode) return;
   if (mode.t === "note") { st.pos[mode.n.id] = [Math.round(mode.n.x), Math.round(mode.n.y)]; const m = st.mine.find((x) => x.id === mode.n.id); if (m) { m.x = mode.n.x; m.y = mode.n.y; } save(); }
   if (mode.t === "wire") {
@@ -121,13 +126,10 @@ $("#add-form").addEventListener("submit", (e) => {
   const W = board.clientWidth, H = board.clientHeight;
   const n = { id: "u" + Date.now().toString(36), text, name: $("#add-name").value.trim(), x: (W / 2 - cam.x) / cam.k - 115, y: (H / 2 - cam.y) / cam.k - 60 };
   st.mine.push(n); notes[n.id] = { ...n, c: "you" }; render(notes[n.id]); save(); dlg.close(); drawWires();
-  toast("Pinned. Drag its ◆ onto a thought it connects to.");
+  toast("Added. Drag its ◆ onto a thought it connects to.");
 });
-$("#zin").onclick = () => zoomAt(1.2, board.clientWidth / 2, board.clientHeight / 2);
-$("#zout").onclick = () => zoomAt(1 / 1.2, board.clientWidth / 2, board.clientHeight / 2);
 $("#fit").onclick = fit;
 $("#clear").onclick = () => { for (const m of st.mine) { els[m.id]?.remove(); delete notes[m.id]; } st.mine = []; st.links = []; st.plus = {}; st.pos = {}; save(); location.reload(); };
-$("#intro-x").onclick = () => { $("#intro").hidden = true; fit(); };
 
 requestAnimationFrame(() => { drawWires(); fit(); });
 addEventListener("resize", fit);
