@@ -38,7 +38,7 @@ window.VENTURES = [
 
   // Consumer & Community
   { name: "Hypercurated", industry: "community", type: "venture", year: "2024–", blurb: "Feed, community and event hosting in one place, built on the idea that your data belongs to you.", stack: "Web · Mobile", href: "" },
-  { name: "Anonymous Chat", industry: "community", type: "experiment", year: "2025", blurb: "Real-time anonymous group chat and reviews, designed for privacy.", stack: "Next.js", href: "https://anonymous-chat-app.vercel.app" },
+  { name: "Anonymous Chat", industry: "community", type: "experiment", year: "2025", blurb: "Real-time anonymous group chat and reviews, designed for privacy.", stack: "Next.js", href: "https://anonymous-chat-app-three.vercel.app" },
   { name: "JanOS", industry: "community", type: "venture", year: "2026", blurb: "Civic app for citizens: report, track and act on what's around you.", stack: "React Native · Firebase", href: "" },
   { name: "Leo Club app", industry: "community", type: "client", year: "2025", blurb: "Mobile app for a Leo Club chapter: members, events and service projects.", stack: "React Native", href: "" },
 
@@ -47,7 +47,7 @@ window.VENTURES = [
   { name: "Tefline", industry: "health", type: "client", year: "2025", blurb: "The epicenter for lifestyle medicine, plus a wellness companion product.", stack: "Next.js · Supabase", href: "https://tefline-website.vercel.app" },
   { name: "Eazy Ayurveda", industry: "health", type: "client", year: "2025", blurb: "Natural Ayurvedic remedies brand: site, Shopify store, Amazon listings and campaigns.", stack: "Next.js · Shopify", href: "https://eazy-ayurveda.vercel.app" },
   { name: "The Trainer", industry: "health", type: "client", year: "2025", blurb: "Site for fitness and nutrition coach Anish Palesha.", stack: "Next.js", href: "https://www.apthetrainer.com" },
-  { name: "Aadhar Foundation", industry: "health", type: "client", year: "2025", blurb: "Health, nutrition and medical research for underserved communities.", stack: "Next.js", href: "https://aadhar-foundation.vercel.app" },
+  { name: "Aadhar Foundation", industry: "health", type: "client", year: "2025", blurb: "Health, nutrition and medical research for underserved communities.", stack: "Next.js", href: "" },
   { name: "Easemyhealth", industry: "health", type: "venture", year: "2025", blurb: "Healthcare access brand: identity and product concept.", stack: "Brand", href: "" },
   { name: "Assistift", industry: "health", type: "venture", year: "2025", blurb: "Assistive fitness product, from prototype to pitch deck and demo.", stack: "Hardware · Pitch", href: "" },
 
@@ -61,7 +61,7 @@ window.VENTURES = [
 
   // Education & Impact
   { name: "Mentoverse", industry: "education", type: "venture", year: "2025", blurb: "Helping people find their next step in education, career and beyond.", stack: "Next.js · Firebase", href: "https://mentoverse.co.in" },
-  { name: "Morphoverse", industry: "education", type: "venture", year: "2025", blurb: "Emotional intelligence for leaders.", stack: "Next.js", href: "https://morphoverse.vercel.app" },
+  { name: "Morphoverse", industry: "education", type: "venture", year: "2025", blurb: "Emotional intelligence for leaders.", stack: "Next.js", href: "https://morphoverse-ecru.vercel.app" },
   { name: "IIHM", industry: "education", type: "client", year: "2025", blurb: "Site for the International Institute of Hotel Management.", stack: "React", href: "https://iihm.vercel.app" },
   { name: "Saamrajya.tech", industry: "education", type: "client", year: "2025", blurb: "Strategic political consulting in India.", stack: "Next.js", href: "https://saamrajhya-tech.vercel.app" },
 
@@ -80,7 +80,7 @@ window.VENTURES = [
 
   // Commerce & Services
   { name: "Oriental Sports", industry: "commerce", type: "client", year: "2026", blurb: "Shopify store, custom theme and app for a sports-goods brand.", stack: "Shopify · React Router", href: "" },
-  { name: "Tailoring Turba", industry: "commerce", type: "client", year: "2025", blurb: "Custom T-shirt printing with an in-browser designer.", stack: "Next.js", href: "https://tailoring-turba.vercel.app" },
+  { name: "Tailoring Turba", industry: "commerce", type: "client", year: "2025", blurb: "Custom T-shirt printing with an in-browser designer.", stack: "Next.js", href: "https://tailoringturba.com" },
   { name: "Nutrivita", industry: "commerce", type: "client", year: "2025", blurb: "Company overview film.", stack: "Video", href: "" },
 
   // Studio & Tools
