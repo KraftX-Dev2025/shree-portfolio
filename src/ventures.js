@@ -26,6 +26,7 @@ window.VENTURES = [
   { name: "Home agent", industry: "ai", type: "experiment", year: "2026", blurb: "Agent on WhatsApp with a heartbeat and a sense layer: lights, speakers, alarms, no browser.", stack: "Agents", href: "" },
   { name: "Higgsfield MCP", industry: "ai", type: "experiment", year: "2026", blurb: "MCP server that lets Claude generate, track and download Higgsfield videos with no public API.", stack: "TypeScript · MCP · Playwright", href: "" },
   { name: "JobBot", industry: "ai", type: "experiment", year: "2025", blurb: "AI job scanner and auto-applier for LinkedIn, Indeed, Naukri and Internshala.", stack: "Chrome extension · Claude", href: "" },
+  { name: "Kurukshetra", industry: "ai", type: "venture", year: "2025", blurb: "Edge AI video analytics for tennis, padel and pickleball. Upload a fixed-camera match, mark the court, get player movement metrics.", stack: "Python · computer vision", href: "" },
   { name: "LinkedIn AutoPilot", industry: "ai", type: "experiment", year: "2026", blurb: "Researches a topic across Reddit, YouTube and TikTok, then writes a ready-to-post LinkedIn post.", stack: "Python · AI", href: "" },
   { name: "Campaign OS", industry: "ai", type: "client", year: "2026", blurb: "Weekly campaign tracker with a task rail, results log and playbook. Reseedable for any brand.", stack: "HTML · Postgres", href: "https://anantara-campaign-os.vercel.app" },
 
@@ -38,6 +39,7 @@ window.VENTURES = [
 
   // Consumer & Community
   { name: "Hypercurated", industry: "community", type: "venture", year: "2024–", blurb: "Feed, community and event hosting in one place, built on the idea that your data belongs to you.", stack: "Web · Mobile", href: "" },
+  { name: "Aadhyatmik Niwas", industry: "community", type: "venture", year: "2025", blurb: "Spiritual retreat site: stays, practices and a calm way in.", stack: "React · Vite", href: "https://spiritual-website-lime.vercel.app" },
   { name: "Anonymous Chat", industry: "community", type: "experiment", year: "2025", blurb: "Real-time anonymous group chat and reviews, designed for privacy.", stack: "Next.js", href: "https://anonymous-chat-app-three.vercel.app" },
   { name: "JanOS", industry: "community", type: "venture", year: "2026", blurb: "Civic app for citizens: report, track and act on what's around you.", stack: "React Native · Firebase", href: "" },
   { name: "Leo Club app", industry: "community", type: "client", year: "2025", blurb: "Mobile app for a Leo Club chapter: members, events and service projects.", stack: "React Native", href: "" },
@@ -45,7 +47,7 @@ window.VENTURES = [
   // Health & Wellness
   { name: "Kraftodent", industry: "health", type: "venture", year: "2025", blurb: "AI automation for modern dental practices in India.", stack: "Next.js · AI", href: "https://kraftodent.vercel.app" },
   { name: "Tefline", industry: "health", type: "client", year: "2025", blurb: "The epicenter for lifestyle medicine, plus a wellness companion product.", stack: "Next.js · Supabase", href: "https://tefline-website.vercel.app" },
-  { name: "Eazy Ayurveda", industry: "health", type: "client", year: "2025", blurb: "Natural Ayurvedic remedies brand: site, Shopify store, Amazon listings and campaigns.", stack: "Next.js · Shopify", href: "https://eazy-ayurveda.vercel.app" },
+  { name: "Eazy Ayurveda", industry: "health", type: "client", year: "2025", blurb: "Natural Ayurvedic remedies brand: site, Shopify store, Amazon listings and campaigns.", stack: "Next.js · Shopify · webhooks", href: "https://eazy-ayurveda.vercel.app" },
   { name: "The Trainer", industry: "health", type: "client", year: "2025", blurb: "Site for fitness and nutrition coach Anish Palesha.", stack: "Next.js", href: "https://www.apthetrainer.com" },
   { name: "Aadhar Foundation", industry: "health", type: "client", year: "2025", blurb: "Health, nutrition and medical research for underserved communities.", stack: "Next.js", href: "" },
   { name: "Easemyhealth", industry: "health", type: "venture", year: "2025", blurb: "Healthcare access brand: identity and product concept.", stack: "Brand", href: "" },
@@ -62,6 +64,7 @@ window.VENTURES = [
   // Education & Impact
   { name: "Mentoverse", industry: "education", type: "venture", year: "2025", blurb: "Helping people find their next step in education, career and beyond.", stack: "Next.js · Firebase", href: "https://mentoverse.co.in" },
   { name: "Morphoverse", industry: "education", type: "venture", year: "2025", blurb: "Emotional intelligence for leaders.", stack: "Next.js", href: "https://morphoverse-ecru.vercel.app" },
+  { name: "With You NGO", industry: "education", type: "client", year: "2025", blurb: "Site for an NGO empowering communities since 2015.", stack: "Next.js", href: "https://v0-website-development-brief-mauve.vercel.app" },
   { name: "IIHM", industry: "education", type: "client", year: "2025", blurb: "Site for the International Institute of Hotel Management.", stack: "React", href: "https://iihm.vercel.app" },
   { name: "Saamrajya.tech", industry: "education", type: "client", year: "2025", blurb: "Strategic political consulting in India.", stack: "Next.js", href: "https://saamrajhya-tech.vercel.app" },
 
@@ -81,6 +84,7 @@ window.VENTURES = [
   // Commerce & Services
   { name: "Oriental Sports", industry: "commerce", type: "client", year: "2026", blurb: "Shopify store, custom theme and app for a sports-goods brand.", stack: "Shopify · React Router", href: "" },
   { name: "Tailoring Turba", industry: "commerce", type: "client", year: "2025", blurb: "Custom T-shirt printing with an in-browser designer.", stack: "Next.js", href: "https://tailoringturba.com" },
+  { name: "Adv. Shivraj", industry: "commerce", type: "client", year: "2026", blurb: "Site for an advocate and legal counsel.", stack: "HTML", href: "https://adv-shivraj.vercel.app" },
   { name: "Nutrivita", industry: "commerce", type: "client", year: "2025", blurb: "Company overview film.", stack: "Video", href: "" },
 
   // Studio & Tools
