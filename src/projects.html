@@ -1,0 +1,79 @@
+<title>Shree's Projects</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Every venture, client build and experiment by Shree and KraftX, grouped by industry.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="site.css">
+<style>
+/* Layout: a header with counts and filters, then one band per industry holding a card grid. */
+.top { padding-block: clamp(56px, 9vw, 112px) 32px; }
+.top h1 { font-size: clamp(48px, 9vw, 120px); font-weight: 500; letter-spacing: -.05em; }
+.top h1 span { color: var(--diamond); }
+.top .lede { margin: 20px 0 0; }
+.stats { display: flex; flex-wrap: wrap; gap: 28px; margin-top: 32px; font: 12px var(--mono); color: var(--mute); text-transform: uppercase; letter-spacing: .12em; }
+.stats b { display: block; font: 500 36px/1 var(--display); color: var(--paper); letter-spacing: -.02em; margin-bottom: 6px; }
+.filters { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 64px); z-index: 40; background: rgba(7,8,12,.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-block: 1px solid var(--line); }
+.filters .wrap { display: flex; gap: 8px; padding-block: 12px; overflow-x: auto; scrollbar-width: none; }
+.filters .wrap::-webkit-scrollbar { display: none; }
+.chip { flex: none; font: 500 13px/1 var(--body); padding: 9px 14px; border-radius: 999px; border: 1px solid var(--line); background: var(--panel); color: var(--mute); cursor: pointer; transition: color .2s, border-color .2s, background .2s; }
+.chip:hover { color: var(--paper); }
+.chip[aria-pressed="true"] { background: var(--paper); color: var(--ink); border-color: var(--paper); }
+.chip.sep { margin-left: 8px; }
+.ind { padding-block: 56px 8px; scroll-margin-top: 140px; }
+.ind h2 { font-size: clamp(26px, 3.4vw, 40px); font-weight: 500; display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; }
+.ind h2 small { font: 12px var(--mono); color: var(--mute); letter-spacing: .12em; text-transform: uppercase; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); gap: 14px; margin-top: 24px; }
+.card { position: relative; display: grid; gap: 10px; align-content: start; padding: 22px; border-radius: 16px; background: var(--panel); border: 1px solid var(--line); min-width: 0; transition: border-color .2s, transform .2s; }
+.card:has(a.go:hover) { border-color: var(--diamond); transform: translateY(-2px); }
+.card .meta { display: flex; justify-content: space-between; gap: 8px; font: 11px var(--mono); color: var(--mute); text-transform: uppercase; letter-spacing: .1em; }
+.card h3 { font-size: 24px; font-weight: 500; }
+.card p { margin: 0; color: var(--mute); font-size: 15px; }
+.card .stack { font: 12px var(--mono); color: var(--mute); opacity: .8; }
+.card .links { display: flex; gap: 16px; margin-top: 4px; }
+.card a { font: 600 13px var(--body); color: var(--diamond); text-decoration: none; }
+.card a.go::after { content: ""; position: absolute; inset: 0; border-radius: 16px; }
+.card a.repo { position: relative; z-index: 1; color: var(--mute); }
+.card a.repo:hover { color: var(--paper); }
+.card .soon { font: 12px var(--mono); color: var(--mute); }
+.type { padding: 3px 8px; border-radius: 6px; }
+.t-venture { background: var(--diamond-soft); color: var(--diamond); }
+.t-client { background: rgba(255,181,71,.14); color: var(--spark); }
+.t-experiment { background: rgba(238,234,226,.08); color: var(--paper); }
+.empty { color: var(--mute); padding: 48px 0; }
+footer { padding-block: 64px; }
+footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; color: var(--mute); font-size: 13px; }
+</style>
+</head>
+<body>
+<nav class="nav" aria-label="Main">
+  <div class="wrap">
+    <a class="brand" href="index.html"><i></i>Shree</a>
+    <ul>
+      <li><a href="index.html#journey">Journey</a></li>
+      <li class="keep"><a href="index.html#twin">Twin</a></li>
+      <li class="keep"><a href="projects.html" aria-current="page">Projects</a></li>
+      <li class="keep"><a href="whiteboard.html">Whiteboard</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="top">
+  <div class="wrap">
+    <span class="eyebrow">Projects</span>
+    <h1>Everything I've <span>built.</span></h1>
+    <p class="lede">My own ventures, what KraftX built for clients, and the experiments in between. Grouped by industry.</p>
+    <div class="stats" id="stats"></div>
+  </div>
+</header>
+
+<div class="filters" role="toolbar" aria-label="Filter projects">
+  <div class="wrap" id="filters"></div>
+</div>
+
+<main class="wrap" id="list"></main>
+
+<footer><div class="wrap"><span>© 2026 Shree · KraftX</span><a href="index.html#work">← Back to the journey</a></div></footer>
+
+<script src="ventures.js"></script>
+<script src="projects.js"></script>
+</body>

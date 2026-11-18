@@ -100,12 +100,12 @@ window.CHAPTERS = [
 
 /* ---------- Projects ---------- */
 window.PROJECTS = [
-  { name: "KraftX", year: "2023–", kind: "Company", blurb: "Growth and venture studio for rebels who are also achievers. Engineering, ops, finance and legal under one roof.", tags: ["Founder", "Studio"], href: "" },
+  { name: "KraftX", year: "2023–", kind: "Company", blurb: "Growth and venture studio for rebels who are also achievers. Engineering, ops, finance and legal under one roof.", tags: ["Founder", "Studio"], href: "https://www.kraftxworks.com" },
   { name: "Hypercurated", year: "2024–", kind: "Platform", blurb: "Feed, community and event hosting in one place, built on the idea that your data belongs to you.", tags: ["Consumer", "Community"], href: "https://hypercurated.co" },
-  { name: "Ashwathhama", year: "2025", kind: "AI", blurb: "A homegrown LLM. The start of the digital twin you can talk to on this site.", tags: ["LLM", "Twin"], href: "" },
+  { name: "Ashwathhama", year: "2025", kind: "AI", blurb: "A homegrown LLM. The start of the digital twin you can talk to on this site.", tags: ["LLM", "Twin"], href: "https://ashwathhama.vercel.app" },
   { name: "Home agent", year: "2026", kind: "AI", blurb: "Agent on WhatsApp with a heartbeat and a sense layer: lights, speakers, alarms, no browser.", tags: ["Agents", "Automation"], href: "" },
   { name: "Robocon bot", year: "2017–19", kind: "Robotics", blurb: "Competition robot built in the college lab, raced at the national stage in Delhi.", tags: ["Hardware", "Team"], href: "" },
-  { name: "Fish Tank", year: "2024", kind: "Format", blurb: "Business meets entertainment. An end-to-end launchpad for talented founders.", tags: ["Events", "Founders"], href: "" }
+  { name: "Fish Tank", year: "2024", kind: "Format", blurb: "Business meets entertainment. An end-to-end launchpad for talented founders.", tags: ["Events", "Founders"], href: "https://fish-tank-sigma.vercel.app" }
 ];
 
 /* ---------- Whiteboard seed thoughts ----------
