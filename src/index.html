@@ -142,6 +142,16 @@ footer .wrap { padding-block: 32px; display: flex; justify-content: space-betwee
 .pati figcaption { font: 700 26px/1.2 "Noto Sans Devanagari", var(--display); color: #b3261e; text-align: center; margin-bottom: 14px; }
 .pati ol { margin: 0; padding-left: 22px; display: grid; gap: 10px; font: 500 16px/1.45 var(--body); }
 .pati .sig { margin: 16px 0 0; text-align: right; font: 600 15px/1.3 "Noto Sans Devanagari", var(--body); color: #b3261e; }
+.hero .tag-wrap { display: grid; gap: 14px; }
+.hero .tag { margin: 0; }
+.proof { padding-block: 40px; border-bottom: 1px solid var(--line); }
+.proof-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); gap: 28px 40px; }
+.proof-row a, .proof-row div { text-decoration: none; display: grid; gap: 8px; }
+.proof-row b { font: 500 clamp(36px, 4.6vw, 56px)/1 var(--display); letter-spacing: -.03em; color: var(--paper); }
+.proof-row span { font: 12px var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--mute); }
+.proof-row a:hover b { color: var(--diamond); }
+.twin-note { margin: 0; padding: 10px 16px; font: 12px/1.5 var(--mono); color: var(--spark); border-bottom: 1px solid var(--line); }
+.twin-note a { color: inherit; }
 </style>
 
 <nav class="nav" aria-label="Main">
@@ -163,12 +173,51 @@ footer .wrap { padding-block: 32px; display: flex; justify-content: space-betwee
   <div class="wrap">
     <h1>Shree<span>.</span></h1>
     <div class="row">
-      <p class="tag" id="tagline">I build journey experiences.</p>
+      <div class="tag-wrap"><span class="eyebrow" id="hero-eyebrow">I build journey experiences.</span><p class="tag" id="tagline"></p></div>
       <p class="intro" id="intro"></p>
     </div>
     <a class="scroll-cue" href="#journey">Scroll the journey ↓</a>
   </div>
 </header>
+
+<section class="proof" aria-label="At a glance">
+  <div class="wrap"><div class="proof-row" id="proof"></div></div>
+</section>
+
+<section id="work">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Work</span>
+      <h2>Selected work.</h2>
+    </div>
+    <div class="proj" id="proj"></div>
+    <div style="margin-top:40px"><a class="btn primary" href="projects.html">See every project, by industry →</a></div>
+  </div>
+</section>
+
+<section id="journey">
+  <div class="wrap intro-band">
+    <div class="sec-head" style="margin:0">
+      <span class="eyebrow">The journey</span>
+      <h2>From paper cranes to AI.</h2>
+      <p class="lede">27 years in 11 scenes. Scroll to watch me grow up. The kid in specs on the crate is younger me, rebuilt as my AI twin, and he'll talk to you at the end.</p>
+    </div>
+  </div>
+  <div class="scroller" id="scroller">
+    <div class="stage wrap">
+      <div class="card" id="card">
+        <div class="years fade" id="c-years"></div>
+        <h3 class="fade" id="c-title"></h3>
+        <p class="fade" id="c-diary"></p>
+        <a class="btn primary twin-cta" id="twin-cta" href="#twin">Talk to the twin →</a>
+      </div>
+      <div class="scene">
+        <svg id="scene" viewBox="0 0 800 540" role="img" aria-label="An illustrated character doing life activities while a small boy watches"></svg>
+        <div class="bubble" id="bubble"></div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <section id="memory">
   <div class="wrap">
@@ -194,30 +243,6 @@ footer .wrap { padding-block: 32px; display: flex; justify-content: space-betwee
   </div>
 </section>
 
-<section id="journey">
-  <div class="wrap intro-band">
-    <div class="sec-head" style="margin:0">
-      <span class="eyebrow">The journey</span>
-      <h2>A kid watched me grow up.</h2>
-      <p class="lede">The small one on the crate is my digital twin. He watched everything, and you can talk to him at the end.</p>
-    </div>
-  </div>
-  <div class="scroller" id="scroller">
-    <div class="stage wrap">
-      <div class="card" id="card">
-        <div class="years fade" id="c-years"></div>
-        <h3 class="fade" id="c-title"></h3>
-        <p class="fade" id="c-diary"></p>
-        <a class="btn primary twin-cta" id="twin-cta" href="#twin">Talk to the twin →</a>
-      </div>
-      <div class="scene">
-        <svg id="scene" viewBox="0 0 800 540" role="img" aria-label="An illustrated character doing life activities while a small boy watches"></svg>
-        <div class="bubble" id="bubble"></div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <section id="twin">
   <div class="wrap twin-grid">
     <div class="twin-copy">
@@ -227,6 +252,7 @@ footer .wrap { padding-block: 32px; display: flex; justify-content: space-betwee
     </div>
     <div class="chat">
       <header><div class="av">S</div><div><strong>Shree's twin</strong><small id="twin-status">online · remembers everything</small></div></header>
+      <p class="twin-note" id="twin-note" hidden>Dupari 1 te 4 twin jhopla aahe. Urgent asel tar <a href="whiteboard.html">Thoughts</a> var lihun theva.</p>
       <div class="log" id="log" aria-live="polite"></div>
       <div>
         <div class="chips" id="chips"></div>
@@ -240,26 +266,15 @@ footer .wrap { padding-block: 32px; display: flex; justify-content: space-betwee
   </div>
 </section>
 
-<section id="work">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="eyebrow">Work</span>
-      <h2>Selected work.</h2>
-    </div>
-    <div class="proj" id="proj"></div>
-    <div style="margin-top:40px"><a class="btn primary" href="projects.html">See every project, by industry →</a></div>
-  </div>
-</section>
-
 <section style="padding-top:0">
   <div class="wrap">
     <div class="teaser">
       <div style="display:grid;gap:12px;max-width:640px">
-        <span class="eyebrow">Whiteboard</span>
+        <span class="eyebrow">Thoughts</span>
         <h2>My raw thoughts, unfiltered-ish.</h2>
         <p class="lede" style="margin:0">Diary lines on an open board. Connect them, or pin your own.</p>
       </div>
-      <a class="btn" href="whiteboard.html">Open the whiteboard →</a>
+      <a class="btn" href="whiteboard.html">Open my thoughts →</a>
     </div>
   </div>
 </section>
@@ -281,5 +296,6 @@ footer .wrap { padding-block: 32px; display: flex; justify-content: space-betwee
 <footer><div class="wrap"><span>© 2026 Shree · Built as a journey</span><span id="socials"></span></div></footer>
 
 <script src="data.js"></script>
+<script src="ventures.js"></script>
 <script src="app.js"></script>
 <script src="memory-card.js"></script>

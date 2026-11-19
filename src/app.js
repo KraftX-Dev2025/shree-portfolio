@@ -3,9 +3,22 @@ const S = window.SITE, $ = (s) => document.querySelector(s);
 const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 /* ================= HERO ================= */
-$("#tagline").textContent = S.tagline;
+$("#hero-eyebrow").textContent = S.tagline;
+$("#tagline").textContent = S.headline || S.tagline;
 $("#intro").textContent = S.intro;
-$("#socials").innerHTML = S.socials.map((s) => `<a href="${s.href}" target="_blank" rel="noopener">${s.label}</a>`).join(" · ");
+$("#socials").innerHTML = S.socials.filter((s) => s.href && s.href !== "#").map((s) => `<a href="${s.href}" target="_blank" rel="noopener">${s.label}</a>`).join(" · ");
+
+/* ================= PROOF STRIP (numbers derived from the projects data) ================= */
+if (window.VENTURES) {
+  const V = window.VENTURES, inds = new Set(V.map((v) => v.industry));
+  const stats = [
+    [V.length, "Projects shipped", "projects.html"],
+    [inds.size, "Industries", "projects.html"],
+    [V.filter((v) => v.type === "venture" && v.href).length, "Ventures live", "projects.html"],
+    [250, "People held 19 min on stage", ""]
+  ];
+  $("#proof").innerHTML = stats.map(([n, l, h]) => h ? `<a href="${h}"><b>${n}</b><span>${l}</span></a>` : `<div><b>${n}</b><span>${l}</span></div>`).join("");
+}
 
 if (S.showreel) {
   const v = document.createElement("video");
@@ -271,13 +284,17 @@ if (S.showreel) {
         const ctl = new AbortController(); const to = setTimeout(() => ctl.abort(), 15000);
         const r = await fetch("/api/twin", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ messages: history.slice(-12) }), signal: ctl.signal });
         clearTimeout(to);
-        if (r.ok) reply = (await r.json()).reply; else api = false;
-      } catch { api = false; }
+        if (r.ok) reply = (await r.json()).reply; else { api = false; $("#twin-note").hidden = false; }
+      } catch { api = false; $("#twin-note").hidden = false; }
     }
     if (!reply) { await new Promise((r) => setTimeout(r, 500 + Math.random() * 500)); reply = local(q); }
     typing.remove(); add("twin", reply); history.push({ role: "assistant", content: reply });
   };
   add("twin", T.greeting);
+  // Probe the brain without spending a call: an empty message gets 400 when the key is set, 503 when it isn't.
+  fetch("/api/twin", { method: "POST", headers: { "Content-Type": "application/json" }, body: "{\"messages\":[]}" })
+    .then((r) => { if (r.status !== 400) throw 0; })
+    .catch(() => { api = false; $("#twin-note").hidden = false; });
   const chips = ["What is KraftX?", "Tell me about Robocon", "Roast me"];
   $("#chips").innerHTML = chips.map((c) => `<button type="button">${c}</button>`).join("");
   $("#chips").addEventListener("click", (e) => { if (e.target.tagName === "BUTTON") ask(e.target.textContent); });

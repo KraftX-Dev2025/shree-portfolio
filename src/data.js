@@ -4,13 +4,14 @@
 window.SITE = {
   name: "Shree",
   tagline: "I build journey experiences.",
-  intro: "Founder of KraftX and Hypercurated. Robotics kid, gym rat, stand-up comic, AI tinkerer. Twenty-seven years of trying everything, one story.",
+  headline: "Founder of KraftX and Hypercurated. I build AI products and the brands around them.",
+  intro: "Robotics kid, gym rat, stand-up comic, AI tinkerer. Twenty-seven years of trying everything, one story.",
   showreel: "", // drop a URL like "showreel.mp4" here when it's ready
   ticker: ["Origami", "Robocon", "75 Hard", "KraftX", "Hypercurated", "Ashwathhama LLM", "Stand-up", "Pickleball champ", "First rap", "Digital twin"],
   socials: [
     { label: "Hypercurated", href: "https://hypercurated.co" },
-    { label: "LinkedIn", href: "#" },
-    { label: "Instagram", href: "#" }
+    { label: "LinkedIn", href: "" }, // add real URLs; empty ones are hidden
+    { label: "Instagram", href: "" }
   ]
 };
 
