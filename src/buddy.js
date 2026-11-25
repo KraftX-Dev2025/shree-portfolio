@@ -22,7 +22,7 @@
   /* ---------- styles ---------- */
   const css = document.createElement("style");
   css.textContent = `
-  #buddy { position: fixed; left: 0; top: 0; z-index: 70; width: 76px; height: 82px; cursor: pointer; touch-action: none; user-select: none; -webkit-user-select: none;
+  #buddy { position: fixed; left: 0; top: 0; z-index: 2147483000; width: 76px; height: 82px; cursor: pointer; touch-action: none; user-select: none; -webkit-user-select: none;
     transition: transform var(--bd, 1.4s) cubic-bezier(.45,.05,.3,1), opacity .4s; will-change: transform; }
   #buddy.off { opacity: 0; pointer-events: none; }
   #buddy.dragging { transition: opacity .4s; cursor: grabbing; }
@@ -39,7 +39,7 @@
   #bd-armL { transform: rotate(20deg); } #bd-armR { transform: rotate(-20deg); }
   #buddy.pushup .bd-body { animation: bd-push .5s ease-in-out 4 alternate; }
   #buddy.wobble .bd-body { animation: bd-wiggle .12s ease-in-out 4 alternate; }
-  .bd-prop { position: fixed; z-index: 69; pointer-events: none; transition: transform 1.6s cubic-bezier(.2,.6,.3,1), opacity 1.6s; }
+  .bd-prop { position: fixed; z-index: 2147482999; pointer-events: none; transition: transform 1.6s cubic-bezier(.2,.6,.3,1), opacity 1.6s; }
   @keyframes bd-push { from { transform: scale(1,1); } to { transform: translateY(10px) scale(1.12,.8); } }
   @keyframes bd-breathe { 50% { transform: scale(1.03, .97); } }
   @keyframes bd-waddle { from { transform: rotate(-7deg) translateY(0); } to { transform: rotate(7deg) translateY(-3px); } }
@@ -47,10 +47,10 @@
   @keyframes bd-spin { to { transform: rotate(360deg); } }
   @keyframes bd-wiggle { from { transform: rotate(-9deg); } to { transform: rotate(9deg); } }
   @keyframes bd-wave { from { transform: rotate(-150deg); } to { transform: rotate(-110deg); } }
-  #bd-say { position: fixed; z-index: 71; max-width: 220px; background: var(--paper, #eeeae2); color: var(--ink, #07080c); font: 600 13px/1.3 var(--body, system-ui);
+  #bd-say { position: fixed; z-index: 2147483001; max-width: 220px; background: var(--paper, #eeeae2); color: var(--ink, #07080c); font: 600 13px/1.3 var(--body, system-ui);
     padding: 8px 12px; border-radius: 14px; box-shadow: 0 10px 30px rgba(0,0,0,.45); pointer-events: none; opacity: 0; transform: translateY(6px); transition: opacity .2s, transform .2s; white-space: nowrap; }
   #bd-say.on { opacity: 1; transform: none; }
-  #bd-chat { position: fixed; z-index: 72; right: max(16px, env(safe-area-inset-right, 0px)); bottom: max(16px, calc(env(safe-area-inset-bottom, 0px) + 16px));
+  #bd-chat { position: fixed; z-index: 2147483002; right: max(16px, env(safe-area-inset-right, 0px)); bottom: max(16px, calc(env(safe-area-inset-bottom, 0px) + 16px));
     width: min(360px, calc(100vw - 32px)); height: min(480px, calc(100vh - 120px)); display: none; flex-direction: column; overflow: hidden;
     background: var(--panel, #10121a); border: 1px solid var(--line, #252839); border-radius: 18px; box-shadow: 0 24px 60px rgba(0,0,0,.6); color: var(--paper, #eeeae2); }
   #bd-chat.on { display: flex; }
@@ -72,6 +72,10 @@
   #bd-form input:focus { outline: none; border-color: var(--diamond, #5aa9ff); }
   #bd-form button { background: var(--diamond, #5aa9ff); color: var(--ink, #07080c); border: 0; border-radius: 999px; padding: 0 16px; font: 600 13px var(--body, system-ui); cursor: pointer; }
   #bd-dismiss { color: var(--mute, #8d91a4); }
+  #bd-back { position: fixed; z-index: 2147483000; right: max(16px, env(safe-area-inset-right, 0px)); bottom: max(16px, calc(env(safe-area-inset-bottom, 0px) + 16px)); width: 18px; height: 18px; border: 0; padding: 0; border-radius: 50%; cursor: pointer;
+    background: linear-gradient(135deg, #f0d2f8, #b48ff0 55%, #7d55e6); box-shadow: 0 0 14px rgba(139,92,246,.7); display: none; }
+  #bd-back.on { display: block; }
+  #bd-back:hover { transform: scale(1.2); }
   @media (max-width: 600px) { #buddy { width: 60px; height: 65px; } }
   @media (prefers-reduced-motion: reduce) { #buddy, #buddy .bd-body { transition: opacity .2s !important; animation: none !important; } }`;
   document.head.append(css);
@@ -133,6 +137,8 @@
     setTimeout(() => { el.classList.remove("walk"); res(); }, dur * 1000 + 30);
   });
   /* stay in the side gutters and the lower half so reading isn't blocked */
+  /* never leave him outside the viewport (after a peek, a resize or a drag) */
+  const keepOnScreen = () => { const ox = x, oy = y; clamp(); if (ox !== x || oy !== y) place(.6); };
   const randomSpot = () => {
     if (matchMedia("(max-width: 600px)").matches) return [16 + Math.random() * (W() - 90), H() - 90 - Math.random() * 60];
     const leftBand = Math.random() < .35, bx = leftBand ? 16 + Math.random() * Math.max(10, W() * .14) : W() * .74 + Math.random() * (W() * .26 - 100);
@@ -148,7 +154,7 @@
     el.querySelectorAll(".bd-pupil, .bd-shine").forEach((p) => p.setAttribute("transform", `translate(${(dx / dist) * 3 * flip} ${(dy / dist) * 3})`));
     if (mood === "sleep" && dist < 110) { face("shock"); talk("Main jaag raha tha.", 1500); setTimeout(() => mood === "shock" && face("idle"), 900); }
     // dodge a fast-approaching cursor now and then
-    if (!busy && !chatOpen && !dragging && !hidden && dist < 70 && speed > 24 && Math.random() < .35) {
+    if (!busy && !chatOpen && !dragging && !hidden && !inScene && dist < 70 && speed > 24 && Math.random() < .35) {
       busy = true; face("shock"); talk(pick(DODGE), 1400);
       moveTo(x - Math.sign(dx) * (120 + Math.random() * 80), y - Math.sign(dy) * 60, 900).then(() => { face("smug"); busy = false; });
     }
@@ -167,7 +173,7 @@
       face("wink"); el.classList.add("wave"); talk(pick(["Hi.", "Psst.", "Click me.", "Ek minute?"])); await wait(2000); el.classList.remove("wave"); }, 1],
     [2, async () => { // peek from an edge
       const r = size(), side = Math.random() < .5; face("idle"); await moveTo(side ? -r.width * .55 : W() - r.width * .45, H() * (.35 + Math.random() * .45), 400);
-      x = side ? -r.width * .55 : W() - r.width * .45; place(.3); el.classList.toggle("left", !side); await wait(2200); face("wink"); talk("Peekaboo. Fine, that one was childish.", 2200); await wait(2300); }, 1],
+      x = side ? -r.width * .55 : W() - r.width * .45; place(.3); el.classList.toggle("left", !side); await wait(2200); face("wink"); talk("Peekaboo. Fine, that one was childish.", 2200); await wait(2300); const [a, b] = randomSpot(); await moveTo(a, b); }, 1],
     [napTime() ? 6 : 1, async () => { face("sleep"); talk(napTime() ? "Dupari 1 te 4. Do not disturb." : "Five minutes.", 2400); await wait(5000); face("idle"); }],
     [2, async () => { for (let i = 0; i < 3; i++) { const [a, b] = randomSpot(); await moveTo(a, b, 700); } face("smug"); talk("Cardio.", 1600); }, 1],
     [2, async () => { face("smug"); flash("pushup", 2100); await wait(2150); talk(pick(["Twenty. Ish.", "75 Hard, day one.", "Gym since 2018. Me since today."]), 1800); await wait(1800); }],
@@ -192,7 +198,8 @@
   const blink = () => { if (mood === "idle" && !busy) { faceEl.innerHTML = FACES.blink(); setTimeout(() => mood === "idle" && face("idle"), 130); } blinkT = setTimeout(blink, 2500 + Math.random() * 3500); };
   blink();
   const loop = async () => {
-    if (!busy && !chatOpen && !dragging && !hidden && !document.hidden) {
+    if (!busy && !dragging && !chatOpen) keepOnScreen();
+    if (!busy && !chatOpen && !dragging && !hidden && !inScene && !document.hidden) {
       busy = true;
       try {
         if (Date.now() - lastMove > 25000 && Math.random() < .5) { face("happy"); flash("hop", 1250); talk("Still there?"); await wait(1500); }
@@ -208,17 +215,20 @@
 
   /* step aside while the story scene (where he sits on the crate) is on screen */
   const scene = document.getElementById("scroller");
+  /* during the story scene he doesn't vanish: he parks in the corner and watches his sibling on the crate */
+  let inScene = false;
   if (scene && "IntersectionObserver" in window) {
-    const steps = Array.from({ length: 21 }, (_, i) => i / 20);
+    const steps = Array.from({ length: 41 }, (_, i) => i / 40);
     new IntersectionObserver(([e]) => {
-      if (store.get("buddy-hidden") === "1") return;
-      hidden = e.intersectionRect.height > innerHeight * .5 && !chatOpen; el.classList.toggle("off", hidden); if (hidden) say.classList.remove("on");
-    }, { threshold: [0, .01, .02, .04, .06, .08, .1, .12, .15, .2, .3, .5].concat(steps) }).observe(scene);
+      const now = e.intersectionRect.height > innerHeight * .6;
+      if (now === inScene) return; inScene = now;
+      if (inScene && !chatOpen && !dismissed) { say.classList.remove("on"); const b = size(); face("smug"); moveTo(W() - b.width - 16, H() - b.height - 16, 500); }
+    }, { threshold: steps }).observe(scene);
   }
   addEventListener("resize", () => { clamp(); place(0); });
   let lastY = scrollY, lastT = 0;
   addEventListener("scroll", () => { const now = Date.now(), v = Math.abs(scrollY - lastY) / Math.max(16, now - lastT); lastY = scrollY; lastT = now;
-    if (v > 3 && !busy && !chatOpen && !hidden && !reduce) { flash("wobble", 500); if (Math.random() < .15) talk("Slow down. There's reading here.", 1800); } }, { passive: true });
+    if (v > 3 && !busy && !chatOpen && !hidden && !inScene && !reduce) { flash("wobble", 500); if (Math.random() < .15) talk("Slow down. There's reading here.", 1800); } }, { passive: true });
 
   /* ---------- drag vs click ---------- */
   let down = null;
@@ -272,7 +282,16 @@
   }
   const closeChat = () => { chatOpen = false; chat.classList.remove("on"); face("smug"); talk("Come back.", 1500); };
   chat.querySelector("#bd-close").onclick = closeChat;
-  chat.querySelector("#bd-dismiss").onclick = () => { closeChat(); hidden = true; el.classList.add("off"); say.classList.remove("on"); store.set("buddy-hidden", "1"); };
+  let dismissed = false;
+  const pill = document.createElement("button");
+  pill.id = "bd-back"; pill.type = "button"; pill.setAttribute("aria-label", "Bring Shree's twin back"); pill.title = "Bring him back";
+  document.body.append(pill);
+  const setDismissed = (v) => {
+    dismissed = hidden = v; el.classList.toggle("off", v); pill.classList.toggle("on", v); store.set("buddy-hidden", v ? "1" : "0");
+    if (v) say.classList.remove("on"); else { face("wink"); flash("hop", 1250); talk("Missed me.", 1600); }
+  };
+  chat.querySelector("#bd-dismiss").onclick = () => { closeChat(); setDismissed(true); };
+  pill.onclick = () => setDismissed(false);
   addEventListener("keydown", (e) => { if (e.key === "Escape" && chatOpen) closeChat(); });
-  if (store.get("buddy-hidden") === "1") { hidden = true; el.classList.add("off"); }
+  if (store.get("buddy-hidden") === "1") setDismissed(true);
 })();
