@@ -43,7 +43,7 @@
     <p>${esc(v.blurb)}</p>
     ${v.stack ? `<div class="stack">${esc(v.stack)}</div>` : ""}
     <div class="links">
-      ${v.href ? `<a class="go" href="${esc(v.href)}" target="_blank" rel="noopener">${esc(host(v.href))} ↗</a>` : `<span class="soon">Case study soon</span>`}
+      ${v.href ? `<a class="go" href="${esc(v.href)}" target="_blank" rel="noopener">${esc(host(v.href))} ↗</a>` : `<span class="soon">Write-up coming</span>`}
       ${v.repo ? `<a class="repo" href="${esc(v.repo)}" target="_blank" rel="noopener">Code</a>` : ""}
     </div>
     ${socials(v.links)}

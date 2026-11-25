@@ -40,7 +40,7 @@ window.VENTURES = [
 
   // Consumer & Community
   { name: "Hypercurated", industry: "community", type: "venture", year: "2024–", blurb: "Feed, community and event hosting in one place, built on the idea that your data belongs to you.", stack: "Web · Mobile", href: "" },
-  { name: "Aadhyatmik Niwas", industry: "community", type: "venture", year: "2025", blurb: "Spiritual retreat site: stays, practices and a calm way in.", stack: "React · Vite", href: "https://spiritual-website-lime.vercel.app" },
+  { name: "Aadhyatmik Niwas", industry: "community", type: "venture", year: "2025", blurb: "Site for a spiritual retreat: stays and daily practice.", stack: "React · Vite", href: "https://spiritual-website-lime.vercel.app" },
   { name: "Anonymous Chat", industry: "community", type: "experiment", year: "2025", blurb: "Real-time anonymous group chat and reviews, designed for privacy.", stack: "Next.js", href: "https://anonymous-chat-app-three.vercel.app" },
   { name: "JanOS", industry: "community", type: "venture", year: "2026", blurb: "Civic app for citizens: report, track and act on what's around you.", stack: "React Native · Firebase", href: "" },
   { name: "Leo Club app", industry: "community", type: "client", year: "2025", blurb: "Mobile app for a Leo Club chapter: members, events and service projects.", stack: "React Native", href: "" },
@@ -65,7 +65,7 @@ window.VENTURES = [
   // Education & Impact
   { name: "Mentoverse", industry: "education", type: "",  year: "2025", blurb: "Helping people find their next step in education, career and beyond.", stack: "Next.js · Firebase", href: "https://mentoverse.co.in", links: {instagram: "https://instagram.com/mentoverse_", linkedin: "https://www.linkedin.com/company/mentoverse/", x: "https://twitter.com/mentoverse", facebook: "https://www.facebook.com/mentoverse"} },
   { name: "Morphoverse", industry: "education", type: "venture", year: "2025", blurb: "Emotional intelligence for leaders.", stack: "Next.js", href: "https://morphoverse-ecru.vercel.app" },
-  { name: "With You NGO", industry: "education", type: "client", year: "2025", blurb: "Site for an NGO empowering communities since 2015.", stack: "Next.js", href: "https://v0-website-development-brief-mauve.vercel.app", links: {instagram: "https://www.instagram.com/withyou.ngo/", linkedin: "https://www.linkedin.com/company/withyoufoundation/", facebook: "https://www.facebook.com/profile.php?id=100064656521136"} },
+  { name: "With You NGO", industry: "education", type: "client", year: "2025", blurb: "Site for an NGO working with communities since 2015.", stack: "Next.js", href: "https://v0-website-development-brief-mauve.vercel.app", links: {instagram: "https://www.instagram.com/withyou.ngo/", linkedin: "https://www.linkedin.com/company/withyoufoundation/", facebook: "https://www.facebook.com/profile.php?id=100064656521136"} },
   { name: "IIHM", industry: "education", type: "client", year: "2025", blurb: "Site for the International Institute of Hotel Management.", stack: "React", href: "https://iihm.vercel.app" },
   { name: "Saamrajya.tech", industry: "education", type: "client", year: "2025", blurb: "Strategic political consulting in India.", stack: "Next.js", href: "https://saamrajhya-tech.vercel.app" },
 

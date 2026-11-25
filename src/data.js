@@ -3,9 +3,9 @@
 
 window.SITE = {
   name: "Shree",
-  tagline: "I build journey experiences.",
-  headline: "Founder of KraftX and Hypercurated. I build AI products and the brands around them.",
-  intro: "Robotics kid, gym rat, stand-up comic, AI tinkerer. Twenty-seven years of trying everything, one story.",
+  tagline: "Founder · KraftX · Hypercurated",
+  headline: "I build AI products and the brands around them.",
+  intro: "Mechanical engineer from MIT Pune. Took a walking robot to the Robocon nationals, left a corporate job in 2023, and have shipped 54 products since.",
   showreel: "", // drop a URL like "showreel.mp4" here when it's ready
   ticker: ["Origami", "Robocon", "75 Hard", "KraftX", "Hypercurated", "Ashwathhama LLM", "Stand-up", "Pickleball champ", "First rap", "Digital twin"],
   socials: [
@@ -28,17 +28,17 @@ window.PERSONA = {
    Each node: id, label, note (shown in side panel), parent.
    Clicking a node reveals its children. */
 window.GRAPH = [
-  { id: "shree", label: "Shree", note: "Innovator, builder, comic. The most multifaceted person I know how to be." },
+  { id: "shree", label: "Shree", note: "Mechanical engineer turned founder. Also does stand-up." },
 
-  { id: "roots", parent: "shree", label: "Roots", note: "Small-town kid, youngest at home, grew up in a fantasy world of gadgets and sci-fi." },
-  { id: "origami", parent: "roots", label: "Origami", note: "Paper barter in school. Folded my way into my first trades." },
-  { id: "clay", parent: "roots", label: "Clay models", note: "Rubber clay plus coconut oil. Early lessons in making things by hand." },
+  { id: "roots", parent: "shree", label: "Roots", note: "Small-town kid, youngest at home. Grew up on gadgets and sci-fi." },
+  { id: "origami", parent: "roots", label: "Origami", note: "Paper barter in school. My first trades." },
+  { id: "clay", parent: "roots", label: "Clay models", note: "Rubber clay set with coconut oil. Early practice at making things by hand." },
   { id: "ecoclub", parent: "roots", label: "Eco Club", note: "Nature, National Geographic, Warli painting, pottery." },
-  { id: "balbhavan", parent: "roots", label: "Balbhavan", note: "Where a lot of the curiosity started." },
-  { id: "fancydress", parent: "roots", label: "Plastic Bhasmasur", note: "Won hearts at a fancy dress competition dressed as a plastic monster." },
-  { id: "spirit", parent: "roots", label: "Spirituality", note: "My one brahmastra. Keeps me grounded." },
+  { id: "balbhavan", parent: "roots", label: "Balbhavan", note: "Where the curiosity started." },
+  { id: "fancydress", parent: "roots", label: "Plastic Bhasmasur", note: "Entered a fancy-dress competition as a monster made of plastic waste." },
+  { id: "spirit", parent: "roots", label: "Spirituality", note: "Keeps me grounded." },
 
-  { id: "tech", parent: "shree", label: "Tech & Robotics", note: "Every answer was on Google. I pushed myself to master anything digital." },
+  { id: "tech", parent: "shree", label: "Tech & Robotics", note: "Google had every answer, so I learned anything digital." },
   { id: "cs", parent: "tech", label: "CS 1.6", note: "Competitive gamer. Learned that teams lose when nobody talks." },
   { id: "mit", parent: "tech", label: "MIT Pune · Mechanical", note: "Mechanical Engineering at MIT Pune. Second year is when Robocon took over." },
   { id: "robocon", parent: "tech", label: "Robocon", note: "Robocon 2019, theme Great Urtuu: wheels banned. Our 30-member, five-branch team built a four-legged robot that walks like a horse and climbs a mountain, plus a manual robot. I made 29 parts runs across Pune that season." },
@@ -47,23 +47,23 @@ window.GRAPH = [
   { id: "mindspark", parent: "tech", label: "Mindspark", note: "College tech events and the hacker brain." },
   { id: "gadgets", parent: "tech", label: "Gadget dealer", note: "Ran a phone trading hustle long before any company." },
 
-  { id: "body", parent: "shree", label: "Body", note: "Skinny kid turned athlete. Fitness is my forte." },
+  { id: "body", parent: "shree", label: "Body", note: "Skinny as a kid. Training since 2018." },
   { id: "gym", parent: "body", label: "Gym since 2018", note: "Personal training, diet, the whole discipline." },
-  { id: "hard75", parent: "body", label: "75 Hard", note: "Completed it. If I can do it, you definitely can." },
+  { id: "hard75", parent: "body", label: "75 Hard", note: "Completed all 75 days." },
   { id: "cricket", parent: "body", label: "Cricket", note: "Aggressive, competitive, tournament player." },
   { id: "pickle", parent: "body", label: "Pickleball", note: "Won a pickleball tournament in 2025." },
   { id: "kart", parent: "body", label: "Go-karting", note: "Flipped the leaderboard upside down." },
 
-  { id: "founder", parent: "shree", label: "Founder", note: "Every brand is me solving a problem. I listed 1000 problems in every industry." },
-  { id: "kraftx", parent: "founder", label: "KraftX", note: "Started in 2023 with Prateek. Rebels but achievers. A vision for people who don't yet know their potential." },
-  { id: "kxpeak", parent: "kraftx", label: "25 brains", note: "Showed the vision to 25 people and built a crew." },
-  { id: "first5", parent: "kraftx", label: "First 5 clients", note: "Starting with a local medical store in Pune." },
-  { id: "hc", parent: "founder", label: "Hypercurated", note: "Feed, community and events. My data is my data." },
+  { id: "founder", parent: "shree", label: "Founder", note: "Each brand started as a problem on a list of 1,000." },
+  { id: "kraftx", parent: "founder", label: "KraftX", note: "Started in 2023 with Prateek. Built for rebels who are also achievers." },
+  { id: "kxpeak", parent: "kraftx", label: "25 brains", note: "Pitched 25 people. Built the crew from them." },
+  { id: "first5", parent: "kraftx", label: "First 5 clients", note: "Client one was a local medical store in Pune." },
+  { id: "hc", parent: "founder", label: "Hypercurated", note: "Feed, community and events. Your data stays yours." },
   { id: "hcevents", parent: "hc", label: "HC Events", note: "Thunder rave and more." },
   { id: "assistfit", parent: "founder", label: "AssistFit", note: "An early fitness startup idea from 2019–21." },
   { id: "offduty", parent: "founder", label: "Off Duty Driver", note: "Born in 2023 out of a love for cars." },
-  { id: "eazy", parent: "founder", label: "EAZY Ayurveda", note: "My mom is a founder too. Everyone at home is." },
-  { id: "fishtank", parent: "founder", label: "Fish Tank", note: "Business x entertainment. End-to-end setup for launching founders." },
+  { id: "eazy", parent: "founder", label: "EAZY Ayurveda", note: "My mother's company. Everyone at home is a founder." },
+  { id: "fishtank", parent: "founder", label: "Fish Tank", note: "Business as entertainment. A launch format for founders." },
 
   { id: "ai", parent: "shree", label: "AI", note: "Absolute personalisation is the layer to automate." },
   { id: "ashwa", parent: "ai", label: "Ashwathhama", note: "Built my own LLM in 2025." },
@@ -73,15 +73,15 @@ window.GRAPH = [
   { id: "rentbrain", parent: "ai", label: "Rent your brain", note: "Rent your brain for intelligence." },
 
   { id: "stage", parent: "shree", label: "Stage", note: "I got a voice after 27 years." },
-  { id: "standup", parent: "stage", label: "Stand-up", note: "Held a crowd of 250 for 19 minutes without a dull moment." },
-  { id: "rap", parent: "stage", label: "First rap", note: "A founder's journey, in bars." },
+  { id: "standup", parent: "stage", label: "Stand-up", note: "Held 250 people for 19 minutes." },
+  { id: "rap", parent: "stage", label: "First rap", note: "A founder's story, in bars." },
   { id: "podcast", parent: "stage", label: "First podcast", note: "December 2025." },
-  { id: "content", parent: "stage", label: "Content", note: "LinkedIn and reels took off in late 2025. I can spot a star before they're a rockstar." },
+  { id: "content", parent: "stage", label: "Content", note: "LinkedIn and reels took off in late 2025." },
   { id: "acting", parent: "stage", label: "Acting class", note: "Comedy and acting have layers." },
 
-  { id: "world", parent: "shree", label: "Travel", note: "Experiences are the best dopamine." },
+  { id: "world", parent: "shree", label: "Travel", note: "Travel is the best dopamine." },
   { id: "kedar", parent: "world", label: "Kedarkantha", note: "Winter trek out of Dehradun." },
-  { id: "thai", parent: "world", label: "Thailand", note: "Bangkok, Phuket and the islands, outfit planned for every day." },
+  { id: "thai", parent: "world", label: "Thailand", note: "Bangkok, Phuket and the islands." },
   { id: "south", parent: "world", label: "South India", note: "Coorg, Wayanad, Gokarna, Mysuru, Pondicherry." },
   { id: "north", parent: "world", label: "Rajasthan & Manali", note: "Jaipur, Pushkar, Ranthambore, the mountains." },
   { id: "abroad", parent: "world", label: "Dubai & Singapore", note: "First trips abroad." },
@@ -90,33 +90,33 @@ window.GRAPH = [
   { id: "cars", parent: "taste", label: "Petrolhead", note: "Drifting the Vento, off-road carnivals, Ferrari events." },
   { id: "sneakers", parent: "taste", label: "Sneakers", note: "Sneaker fests and the Underground meetups." },
   { id: "interior", parent: "taste", label: "Interiors", note: "Sofas, laminates, a whole home-decor stint in 2021." },
-  { id: "dj", parent: "taste", label: "DJ & music", note: "Rave nights and a playlist for every mood." }
+  { id: "dj", parent: "taste", label: "DJ & music", note: "Rave nights and long playlists." }
 ];
 
 /* ---------- Timeline chapters ----------
    act: which illustrated scene plays.  boy: the twin's face + line. */
 window.CHAPTERS = [
-  { years: "1998–2008", age: 0.52, act: "origami", title: "Paper first", diary: "Origami, paper barter, clay with coconut oil. The first things I ever traded.", boy: { face: "wonder", line: "He made a crane out of homework?" } },
-  { years: "2009–2013", age: 0.6, act: "gaming", title: "The screen years", diary: "CS 1.6, gadgets, Google for every question. A shy kid who believed the web had better answers than people.", boy: { face: "curious", line: "One more round. Then sleep." } },
-  { years: "2014–2016", age: 0.7, act: "campus", title: "Campus & first trips", diary: "Admitted to college, tech events, first trips to Dubai and Manali. The world got bigger.", boy: { face: "happy", line: "Wait, there's a whole world out there?" } },
-  { years: "2017–2019", age: 0.82, act: "robocon", title: "Robocon: a robot that walks", diary: "Robocon 2019 banned wheels, so our 30-person team built a four-legged robot that walks like a horse and climbs a mountain. 29 parts runs across Pune, welding till 3 AM, and we made the nationals in Delhi.", boy: { face: "proud", line: "That robot is ours." } },
-  { years: "2020", age: 0.9, act: "gym", title: "Iron & lockdown", diary: "Back into life, don't compromise. Personal training, diet, patience. Life is a process.", boy: { face: "shock", line: "The skinny one is lifting HOW much?" } },
-  { years: "2021–2022", age: 0.95, act: "corporate", title: "Cars & corporate", diary: "Convocation, a job in automobiles, sneaker fests, cricket leagues. Learning how the big machine works.", boy: { face: "bored", line: "Is this the plan forever?" } },
-  { years: "2023", age: 1, act: "leap", title: "The leap", diary: "Resigned. Moved fast. Started KraftX with Prateek and fought for the first five clients, beginning with a medical store in Pune.", boy: { face: "nervous", line: "Did he just quit?!" } },
-  { years: "2024", age: 1, act: "juggle", title: "A thousand problems", diary: "Listed 1000 problems across industries. Fish Tank, Hypercurated events, a brand for every itch. Finished 75 Hard.", boy: { face: "dizzy", line: "How many companies is that now?" } },
-  { years: "2025", age: 1, act: "content", title: "Turning the camera on", diary: "Built Ashwathhama, an LLM. Won a pickleball tournament. First rap, first podcast, content that people actually love.", boy: { face: "cheer", line: "Go go go!" } },
-  { years: "2026", age: 1, act: "standup", title: "A voice after 27 years", diary: "A crowd of 250, hooked for 19 minutes. Live for the laugh.", boy: { face: "laugh", line: "HAHAHA. He's actually funny." } },
-  { years: "Now", age: 1, act: "twin", title: "Meet the watcher", diary: "The kid who watched all of this is my digital twin. He remembers everything. Ask him anything.", boy: { face: "wink", line: "Psst. Want to talk to me?" } }
+  { years: "1998–2008", age: 0.52, act: "origami", title: "Paper first", diary: "Origami, paper barter in school, clay set with coconut oil. My first trades.", boy: { face: "wonder", line: "That crane was homework." } },
+  { years: "2009–2013", age: 0.6, act: "gaming", title: "The screen years", diary: "CS 1.6, gadgets, Google for every question. Shy offline, fluent online.", boy: { face: "curious", line: "One more round." } },
+  { years: "2014–2016", age: 0.7, act: "campus", title: "College", diary: "Tech events, and the first trips out: Dubai, Manali.", boy: { face: "happy", line: "Passport stamps. Noted." } },
+  { years: "2017–2019", age: 0.82, act: "robocon", title: "Robocon: a robot that walks", diary: "Robocon 2019 banned wheels, so our 30-person team built a four-legged robot that walks like a horse and climbs a mountain. 29 parts runs across Pune, welding till 3 AM, and we made the nationals in Delhi.", boy: { face: "proud", line: "We built that." } },
+  { years: "2020", age: 0.9, act: "gym", title: "Lockdown", diary: "Personal training, a diet, and patience. The habit stuck.", boy: { face: "shock", line: "He used to be the skinny one." } },
+  { years: "2021–2022", age: 0.95, act: "corporate", title: "Cars and corporate", diary: "Graduated into a job in automobiles. Sneaker fests and cricket leagues on weekends. Learned how a big company runs.", boy: { face: "bored", line: "Nine to six, every day." } },
+  { years: "2023", age: 1, act: "leap", title: "The resignation", diary: "Resigned in 2023 and started KraftX with Prateek. Client one was a medical store in Pune.", boy: { face: "nervous", line: "He actually quit." } },
+  { years: "2024", age: 1, act: "juggle", title: "1,000 problems", diary: "Listed 1,000 problems across industries and started building against them: Fish Tank, Hypercurated events. Finished 75 Hard.", boy: { face: "dizzy", line: "I've lost count of the companies." } },
+  { years: "2025", age: 1, act: "content", title: "On camera", diary: "Built Ashwathhama, an LLM. Won a pickleball tournament. First rap, first podcast, and the posts took off.", boy: { face: "cheer", line: "He's recording again." } },
+  { years: "2026", age: 1, act: "standup", title: "Stand-up", diary: "One set. 250 people. 19 minutes.", boy: { face: "laugh", line: "Fine. He's funny." } },
+  { years: "Now", age: 1, act: "twin", title: "The twin", diary: "The kid on the crate saw every scene. He runs on my stories now. Ask him what you'd ask me.", boy: { face: "wink", line: "Questions go below." } }
 ];
 
 /* ---------- Projects ---------- */
 window.PROJECTS = [
   { name: "KraftX", year: "2023–", kind: "Company", blurb: "Growth and venture studio for rebels who are also achievers. Engineering, ops, finance and legal under one roof.", tags: ["Founder", "Studio"], href: "https://www.kraftxworks.com" },
   { name: "Hypercurated", year: "2024–", kind: "Platform", blurb: "Feed, community and event hosting in one place, built on the idea that your data belongs to you.", tags: ["Consumer", "Community"], href: "https://hypercurated.co" },
-  { name: "Ashwathhama", year: "2025", kind: "AI", blurb: "A homegrown LLM. The start of the digital twin you can talk to on this site.", tags: ["LLM", "Twin"], href: "https://ashwathhama.vercel.app" },
-  { name: "Home agent", year: "2026", kind: "AI", blurb: "Agent on WhatsApp with a heartbeat and a sense layer: lights, speakers, alarms, no browser.", tags: ["Agents", "Automation"], href: "" },
+  { name: "Ashwathhama", year: "2025", kind: "AI", blurb: "A homegrown LLM. The twin on this site grew out of it.", tags: ["LLM", "Twin"], href: "https://ashwathhama.vercel.app" },
+  { name: "Home agent", year: "2026", kind: "AI", blurb: "An agent on WhatsApp with a heartbeat and a sense layer. It runs the lights, speakers and alarms without a browser.", tags: ["Agents", "Automation"], href: "" },
   { name: "Great Urtuu", year: "2019", kind: "Robocon", blurb: "Wheels banned. Our team built a four-legged robot that walks like a horse and climbs a mountain, and took it to the nationals in Delhi.", tags: ["Hardware", "Team"], href: "" },
-  { name: "Fish Tank", year: "2024", kind: "Format", blurb: "Business meets entertainment. An end-to-end launchpad for talented founders.", tags: ["Events", "Founders"], href: "https://fish-tank-sigma.vercel.app" }
+  { name: "Fish Tank", year: "2024", kind: "Format", blurb: "Business as entertainment. A launch format for founders.", tags: ["Events", "Founders"], href: "https://fish-tank-sigma.vercel.app" }
 ];
 
 /* ---------- Whiteboard seed thoughts ----------
@@ -160,19 +160,19 @@ window.LINKS = [["t2", "t3"], ["t3", "t1"], ["t4", "t14"], ["t9", "t16"], ["t17"
 
 /* ---------- Twin: fallback brain used when no API is connected ---------- */
 window.TWIN = {
-  greeting: "Hey, I'm Shree's twin. I watched him grow up, so I know where the bodies are buried (metaphorically). Ask me about KraftX, robotics, stand-up, AI, or what to do with your life.",
+  greeting: "I'm Shree's twin. I know the stories he leaves out of interviews. Ask about KraftX, Robocon, stand-up or AI.",
   intents: [
-    { k: ["kraftx", "kx", "company", "agency"], a: "KraftX started in 2023 with Prateek. The first six months were basically a test of whether your co-founder shows up. First client was a local medical store in Pune. Now it's a crew of rebels who are also achievers. Since 2023 we've shipped 54 products across 10 industries." },
-    { k: ["hypercurated", "hc", "platform", "events"], a: "Hypercurated is feed plus community plus event hosting. The whole idea is that your data is yours, not the algorithm's." },
+    { k: ["kraftx", "kx", "company", "agency"], a: "KraftX started in 2023 with Prateek. The first six months tested whether your co-founder shows up. Client one was a local medical store in Pune. Since then, 54 products across 10 industries." },
+    { k: ["hypercurated", "hc", "platform", "events"], a: "Hypercurated is feed, community and event hosting in one place. Your data stays yours, not the algorithm's." },
     { k: ["robot", "robocon", "lab", "mit"], a: "Robocon 2019, theme Great Urtuu. Wheels were banned, so our 30-member, five-branch team at MIT Pune built a four-legged robot that walks like a horse and climbs a mountain, plus a manual robot. I was in second-year Mechanical and made 29 parts runs across Pune that season: Bohri Ali, gear shops, welders. Lab till 3 AM, and we made the nationals in Delhi. It's where I learned how teams actually work." },
-    { k: ["standup", "stand-up", "comedy", "joke", "funny"], a: "I held 250 people for 19 minutes straight. To be funny you need context on every topic plus one step ahead. Want a roast? Tell me your job." },
-    { k: ["ai", "llm", "twin", "agent", "ashwathhama"], a: "I'm built on that obsession. Shree built an LLM called Ashwathhama in 2025, then a home agent that runs on WhatsApp. Next step is connecting everyone's digital twins." },
-    { k: ["gym", "fitness", "75", "workout"], a: "Skinny kid, now fitness is the forte. Gym since 2018, and 75 Hard is done. If he can do it, you definitely can." },
-    { k: ["origami", "child", "kid", "school"], a: "I started with origami and paper barter in school, plus clay models and the Eco Club. I was a shy front-bench kid living in a fantasy world." },
-    { k: ["fear", "introvert", "shy", "scared"], a: "Honestly? I was an extreme introvert for most of my life. The voice came at 27. Confront your identity and wear it." },
-    { k: ["hire", "work", "collab", "contact", "email"], a: "Love that. Drop your note on the whiteboard or reach out through Hypercurated. I read everything." },
-    { k: ["roast"], a: "Okay. You opened a stranger's portfolio and asked the AI version of him to bully you. That's either confidence or a cry for help. Tell me your job and I'll go deeper." },
-    { k: ["advice", "life", "should i", "how do i"], a: "Ask yourself what your fire is. There isn't going to be a right time. One year can change your life." }
+    { k: ["standup", "stand-up", "comedy", "joke", "funny"], a: "250 people, 19 minutes, one set. Good comedy needs context on every topic and a step ahead of the room. Tell me your job if you want a roast." },
+    { k: ["ai", "llm", "twin", "agent", "ashwathhama"], a: "Shree built an LLM called Ashwathhama in 2025, then a home agent that runs on WhatsApp. Next: connecting everyone's digital twins." },
+    { k: ["gym", "fitness", "75", "workout"], a: "Training since 2018. Finished 75 Hard. Ask about the diet, not the motivation." },
+    { k: ["origami", "child", "kid", "school"], a: "Origami and paper barter in school, then clay models and the Eco Club. A shy front-bench kid with a lot going on inside." },
+    { k: ["fear", "introvert", "shy", "scared"], a: "I was an extreme introvert for most of my life. The voice came at 27. Confront your identity and wear it." },
+    { k: ["hire", "work", "collab", "contact", "email"], a: "Leave a note on the Thoughts board. Shree reads every one." },
+    { k: ["roast"], a: "You opened a stranger's portfolio and asked his AI to bully you. Bold. Tell me your job and I'll start." },
+    { k: ["advice", "life", "should i", "how do i"], a: "Work out what your fire is. There won't be a right time. One year can change your life." }
   ],
-  fallback: "Good question. My memory on that is still syncing. Try asking about KraftX, Robocon, stand-up, AI, or the gym."
+  fallback: "Not in my memory yet. Try KraftX, Robocon, stand-up, AI or training."
 };

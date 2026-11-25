@@ -71,7 +71,7 @@
   }
 
   btn.addEventListener("click", async () => {
-    const label = btn.textContent; btn.textContent = "Packing my memory…"; btn.disabled = true;
+    const label = btn.textContent; btn.textContent = "Saving…"; btn.disabled = true;
     try {
       const cv = await draw();
       const blob = await new Promise((r) => cv.toBlob(r, "image/png"));
@@ -79,7 +79,7 @@
       if ("download" in a) { a.href = url; a.download = "shree-memory.png"; document.body.append(a); a.click(); a.remove(); }
       else location.href = url;
       setTimeout(() => URL.revokeObjectURL(url), 60000);
-      btn.textContent = "Saved. Check your Downloads ↓";
+      btn.textContent = "Saved to Downloads";
     } catch (e) { btn.textContent = "Couldn't save it, try again"; }
     setTimeout(() => { btn.textContent = label; btn.disabled = false; }, 2600);
   });

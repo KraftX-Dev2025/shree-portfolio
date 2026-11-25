@@ -322,7 +322,7 @@ if (S.showreel) {
   // Probe the brain without spending a call: an empty message gets 400 when the key is set, 503 when it isn't.
   fetch("/api/twin", { method: "POST", headers: { "Content-Type": "application/json" }, body: "{\"messages\":[]}" })
     .then((r) => { if (r.status !== 400) throw 0; })
-    .catch(() => { api = false; $("#twin-note").hidden = false; });
+    .catch(() => { api = false; $("#twin-note").hidden = false; $("#twin-status").textContent = "scripted answers"; });
   const chips = ["What is KraftX?", "Tell me about Robocon", "Roast me"];
   $("#chips").innerHTML = chips.map((c) => `<button type="button">${c}</button>`).join("");
   $("#chips").addEventListener("click", (e) => { if (e.target.tagName === "BUTTON") ask(e.target.textContent); });
