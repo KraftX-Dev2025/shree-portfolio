@@ -1,7 +1,7 @@
 /* ---------- Projects page data ----------
    To add a project: copy any line below and edit it. That's it.
    industry: must match a key in INDUSTRIES (add a new key there for a new industry).
-   type:     "venture" (mine), "client" (built by KraftX for a client), "experiment" (side build / tool).
+   type:     "venture" (mine), "client" (built by KraftX for a client), "experiment" (side build / tool), "" (role not confirmed: no label shown).
    href:     live link, or "" if not public yet (the card still shows).
    repo:     public GitHub link, optional.
    stack:    short, optional.
@@ -51,7 +51,7 @@ window.VENTURES = [
   { name: "The Trainer", industry: "health", type: "client", year: "2025", blurb: "Site for fitness and nutrition coach Anish Palesha.", stack: "Next.js", href: "https://www.apthetrainer.com" },
   { name: "Aadhar Foundation", industry: "health", type: "client", year: "2025", blurb: "Health, nutrition and medical research for underserved communities.", stack: "Next.js", href: "" },
   { name: "Easemyhealth", industry: "health", type: "venture", year: "2025", blurb: "Healthcare access brand: identity and product concept.", stack: "Brand", href: "" },
-  { name: "Assistift", industry: "health", type: "venture", year: "2025", blurb: "Assistive fitness product, from prototype to pitch deck and demo.", stack: "Hardware · Pitch", href: "" },
+  { name: "Assistift", industry: "health", type: "",  year: "2025", blurb: "Assistive fitness product, from prototype to pitch deck and demo.", stack: "Hardware · Pitch", href: "" },
 
   // Finance & Real Estate
   { name: "Kuvera Kapital", industry: "finance", type: "venture", year: "2025", blurb: "Realty and capital advisory.", stack: "Next.js", href: "https://www.kuverakapital.com" },
@@ -62,7 +62,7 @@ window.VENTURES = [
   { name: "Bombay House", industry: "finance", type: "client", year: "2026", blurb: "AI growth pitch for a luxury property brand.", stack: "Strategy", href: "" },
 
   // Education & Impact
-  { name: "Mentoverse", industry: "education", type: "venture", year: "2025", blurb: "Helping people find their next step in education, career and beyond.", stack: "Next.js · Firebase", href: "https://mentoverse.co.in" },
+  { name: "Mentoverse", industry: "education", type: "",  year: "2025", blurb: "Helping people find their next step in education, career and beyond.", stack: "Next.js · Firebase", href: "https://mentoverse.co.in" },
   { name: "Morphoverse", industry: "education", type: "venture", year: "2025", blurb: "Emotional intelligence for leaders.", stack: "Next.js", href: "https://morphoverse-ecru.vercel.app" },
   { name: "With You NGO", industry: "education", type: "client", year: "2025", blurb: "Site for an NGO empowering communities since 2015.", stack: "Next.js", href: "https://v0-website-development-brief-mauve.vercel.app" },
   { name: "IIHM", industry: "education", type: "client", year: "2025", blurb: "Site for the International Institute of Hotel Management.", stack: "React", href: "https://iihm.vercel.app" },
@@ -92,5 +92,5 @@ window.VENTURES = [
   { name: "VaultFill", industry: "studio", type: "experiment", year: "2026", blurb: "Chrome password manager. AES-256-GCM vault, PBKDF2 with 600k iterations, nothing leaves your device.", stack: "Chrome MV3", href: "" },
   { name: "WLED Gestures", industry: "studio", type: "experiment", year: "2026", blurb: "Control your lights with hand gestures, right in the browser.", stack: "MediaPipe · WLED", href: "https://wled-gestures.vercel.app" },
   { name: "OpenClaw playbooks", industry: "studio", type: "experiment", year: "2026", blurb: "Install, security, cron and UGC guides for running OpenClaw agents.", stack: "Guides", href: "" },
-  { name: "Robocon bot", industry: "studio", type: "experiment", year: "2017–19", blurb: "Competition robot built in the college lab, raced at the national stage in Delhi.", stack: "Hardware", href: "" }
+  { name: "Great Urtuu (Robocon 2019)", industry: "studio", type: "experiment", year: "2019", blurb: "Wheels were banned, so our 30-member team built a four-legged robot that walks like a horse and climbs a mountain, plus a manual robot. Reached the nationals in Delhi.", stack: "Mechanical · Robotics", href: "" }
 ];

@@ -36,7 +36,7 @@
   });
 
   const card = (v) => `<article class="card">
-    <div class="meta"><span class="type t-${esc(v.type)}">${esc(TYPES[v.type] || v.type)}</span><span>${esc(v.year)}</span></div>
+    <div class="meta">${TYPES[v.type] ? `<span class="type t-${esc(v.type)}">${esc(TYPES[v.type])}</span>` : "<span></span>"}<span>${esc(v.year)}</span></div>
     <h3>${esc(v.name)}</h3>
     <p>${esc(v.blurb)}</p>
     ${v.stack ? `<div class="stack">${esc(v.stack)}</div>` : ""}

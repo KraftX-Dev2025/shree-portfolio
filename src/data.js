@@ -40,8 +40,9 @@ window.GRAPH = [
 
   { id: "tech", parent: "shree", label: "Tech & Robotics", note: "Every answer was on Google. I pushed myself to master anything digital." },
   { id: "cs", parent: "tech", label: "CS 1.6", note: "Competitive gamer. Learned that teams lose when nobody talks." },
-  { id: "robocon", parent: "tech", label: "Robocon", note: "Years in the MIT lab. Prototyping, milling, welding, late-night pit checklists." },
-  { id: "nst", parent: "robocon", label: "Delhi NST", note: "Took the bot to the national stage." },
+  { id: "mit", parent: "tech", label: "MIT Pune · Mechanical", note: "Mechanical Engineering at MIT Pune. Second year is when Robocon took over." },
+  { id: "robocon", parent: "tech", label: "Robocon", note: "Robocon 2019, theme Great Urtuu: wheels banned. Our 30-member, five-branch team built a four-legged robot that walks like a horse and climbs a mountain, plus a manual robot. I made 29 parts runs across Pune that season." },
+  { id: "nst", parent: "robocon", label: "Delhi NST", note: "Milled and welded in the lab till 3 AM, then took the walking robot to the national stage in Delhi." },
   { id: "drive", parent: "robocon", label: "Drive system", note: "Pushed a drive-system upgrade through heavy resistance." },
   { id: "mindspark", parent: "tech", label: "Mindspark", note: "College tech events and the hacker brain." },
   { id: "gadgets", parent: "tech", label: "Gadget dealer", note: "Ran a phone trading hustle long before any company." },
@@ -98,7 +99,7 @@ window.CHAPTERS = [
   { years: "1998–2008", age: 0.52, act: "origami", title: "Paper first", diary: "Origami, paper barter, clay with coconut oil. The first things I ever traded.", boy: { face: "wonder", line: "He made a crane out of homework?" } },
   { years: "2009–2013", age: 0.6, act: "gaming", title: "The screen years", diary: "CS 1.6, gadgets, Google for every question. A shy kid who believed the web had better answers than people.", boy: { face: "curious", line: "One more round. Then sleep." } },
   { years: "2014–2016", age: 0.7, act: "campus", title: "Campus & first trips", diary: "Admitted to college, tech events, first trips to Dubai and Manali. The world got bigger.", boy: { face: "happy", line: "Wait, there's a whole world out there?" } },
-  { years: "2017–2019", age: 0.82, act: "robocon", title: "Robocon", diary: "Lab till 3 AM. Milling, welding, pit checklists, taking the bot to the national stage in Delhi.", boy: { face: "proud", line: "That robot is ours." } },
+  { years: "2017–2019", age: 0.82, act: "robocon", title: "Robocon: a robot that walks", diary: "Robocon 2019 banned wheels, so our 30-person team built a four-legged robot that walks like a horse and climbs a mountain. 29 parts runs across Pune, welding till 3 AM, and we made the nationals in Delhi.", boy: { face: "proud", line: "That robot is ours." } },
   { years: "2020", age: 0.9, act: "gym", title: "Iron & lockdown", diary: "Back into life, don't compromise. Personal training, diet, patience. Life is a process.", boy: { face: "shock", line: "The skinny one is lifting HOW much?" } },
   { years: "2021–2022", age: 0.95, act: "corporate", title: "Cars & corporate", diary: "Convocation, a job in automobiles, sneaker fests, cricket leagues. Learning how the big machine works.", boy: { face: "bored", line: "Is this the plan forever?" } },
   { years: "2023", age: 1, act: "leap", title: "The leap", diary: "Resigned. Moved fast. Started KraftX with Prateek and fought for the first five clients, beginning with a medical store in Pune.", boy: { face: "nervous", line: "Did he just quit?!" } },
@@ -114,7 +115,7 @@ window.PROJECTS = [
   { name: "Hypercurated", year: "2024–", kind: "Platform", blurb: "Feed, community and event hosting in one place, built on the idea that your data belongs to you.", tags: ["Consumer", "Community"], href: "https://hypercurated.co" },
   { name: "Ashwathhama", year: "2025", kind: "AI", blurb: "A homegrown LLM. The start of the digital twin you can talk to on this site.", tags: ["LLM", "Twin"], href: "https://ashwathhama.vercel.app" },
   { name: "Home agent", year: "2026", kind: "AI", blurb: "Agent on WhatsApp with a heartbeat and a sense layer: lights, speakers, alarms, no browser.", tags: ["Agents", "Automation"], href: "" },
-  { name: "Robocon bot", year: "2017–19", kind: "Robotics", blurb: "Competition robot built in the college lab, raced at the national stage in Delhi.", tags: ["Hardware", "Team"], href: "" },
+  { name: "Great Urtuu", year: "2019", kind: "Robocon", blurb: "Wheels banned. Our team built a four-legged robot that walks like a horse and climbs a mountain, and took it to the nationals in Delhi.", tags: ["Hardware", "Team"], href: "" },
   { name: "Fish Tank", year: "2024", kind: "Format", blurb: "Business meets entertainment. An end-to-end launchpad for talented founders.", tags: ["Events", "Founders"], href: "https://fish-tank-sigma.vercel.app" }
 ];
 
@@ -161,9 +162,9 @@ window.LINKS = [["t2", "t3"], ["t3", "t1"], ["t4", "t14"], ["t9", "t16"], ["t17"
 window.TWIN = {
   greeting: "Hey, I'm Shree's twin. I watched him grow up, so I know where the bodies are buried (metaphorically). Ask me about KraftX, robotics, stand-up, AI, or what to do with your life.",
   intents: [
-    { k: ["kraftx", "kx", "company", "agency"], a: "KraftX started in 2023 with Prateek. The first six months were basically a test of whether your co-founder shows up. First client was a local medical store in Pune. Now it's a crew of rebels who are also achievers." },
+    { k: ["kraftx", "kx", "company", "agency"], a: "KraftX started in 2023 with Prateek. The first six months were basically a test of whether your co-founder shows up. First client was a local medical store in Pune. Now it's a crew of rebels who are also achievers. Since 2023 we've shipped 54 products across 10 industries." },
     { k: ["hypercurated", "hc", "platform", "events"], a: "Hypercurated is feed plus community plus event hosting. The whole idea is that your data is yours, not the algorithm's." },
-    { k: ["robot", "robocon", "lab", "mit"], a: "Robocon was 2017 to 2019. Lab till 3 AM, milling and welding, politics, and finally the national stage in Delhi. It's where I learned how teams actually work." },
+    { k: ["robot", "robocon", "lab", "mit"], a: "Robocon 2019, theme Great Urtuu. Wheels were banned, so our 30-member, five-branch team at MIT Pune built a four-legged robot that walks like a horse and climbs a mountain, plus a manual robot. I was in second-year Mechanical and made 29 parts runs across Pune that season: Bohri Ali, gear shops, welders. Lab till 3 AM, and we made the nationals in Delhi. It's where I learned how teams actually work." },
     { k: ["standup", "stand-up", "comedy", "joke", "funny"], a: "I held 250 people for 19 minutes straight. To be funny you need context on every topic plus one step ahead. Want a roast? Tell me your job." },
     { k: ["ai", "llm", "twin", "agent", "ashwathhama"], a: "I'm built on that obsession. Shree built an LLM called Ashwathhama in 2025, then a home agent that runs on WhatsApp. Next step is connecting everyone's digital twins." },
     { k: ["gym", "fitness", "75", "workout"], a: "Skinny kid, now fitness is the forte. Gym since 2018, and 75 Hard is done. If he can do it, you definitely can." },

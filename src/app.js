@@ -12,9 +12,10 @@ $("#socials").innerHTML = S.socials.filter((s) => s.href && s.href !== "#").map(
 if (window.VENTURES) {
   const V = window.VENTURES, inds = new Set(V.map((v) => v.industry));
   const stats = [
-    [V.length, "Projects shipped", "projects.html"],
+    [V.length, "Products since 2023", "projects.html"],
     [inds.size, "Industries", "projects.html"],
-    [V.filter((v) => v.type === "venture" && v.href).length, "Ventures live", "projects.html"],
+    [V.filter((v) => v.type === "venture").length, "Own ventures", "projects.html"],
+    [V.filter((v) => v.type === "client").length, "Client builds", "projects.html"],
     [250, "People held 19 min on stage", ""]
   ];
   $("#proof").innerHTML = stats.map(([n, l, h]) => h ? `<a href="${h}"><b>${n}</b><span>${l}</span></a>` : `<div><b>${n}</b><span>${l}</span></div>`).join("");
