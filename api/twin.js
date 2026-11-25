@@ -15,8 +15,9 @@ Rules: never share private details about relationships, family finances, partyin
 
 export default async function handler(req, res) {
   if (req.method !== "POST") return res.status(405).json({ error: "POST only" });
-  const key = process.env.ANTHROPIC_API_KEY;
-  if (!key) return res.status(503).json({ error: "Twin brain not configured" });
+  const key = (process.env.ANTHROPIC_API_KEY || "").trim();
+  // a usable key is plain ASCII; a masked copy (with "•" characters) or a blank value counts as not configured
+  if (!key || !/^[\x21-\x7e]+$/.test(key)) return res.status(503).json({ error: "Twin brain not configured" });
   const msgs = (req.body?.messages || []).slice(-12)
     .filter((m) => (m.role === "user" || m.role === "assistant") && typeof m.content === "string")
     .map((m) => ({ role: m.role, content: m.content.slice(0, 800) }));
@@ -28,8 +29,9 @@ export default async function handler(req, res) {
       headers: { "x-api-key": key, "anthropic-version": "2023-06-01", "content-type": "application/json" },
       body: JSON.stringify({ model: process.env.TWIN_MODEL || "claude-haiku-5-5", max_tokens: 300, system: PERSONA, messages: msgs })
     });
-    const j = await r.json();
-    if (!r.ok) return res.status(502).json({ error: j.error?.message || "Upstream error" });
+    const raw = await r.text();
+    let j = {}; try { j = JSON.parse(raw); } catch { j = {}; }
+    if (!r.ok) { console.error("twin upstream", r.status, j.error?.type || raw.slice(0, 120)); return res.status(502).json({ error: j.error?.message || "Upstream error", status: r.status, type: j.error?.type }); }
     res.status(200).json({ reply: j.content?.map((c) => c.text || "").join("").trim() });
-  } catch (e) { res.status(500).json({ error: "Twin is napping" }); }
+  } catch (e) { console.error("twin failed", e?.name, e?.message); res.status(500).json({ error: "Twin is napping" }); }
 }
