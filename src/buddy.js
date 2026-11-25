@@ -262,7 +262,7 @@
       try {
         const ctl = new AbortController(), to = setTimeout(() => ctl.abort(), 15000);
         const r = await fetch("/api/twin", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ messages: history.slice(-12) }), signal: ctl.signal });
-        clearTimeout(to); if (r.ok) reply = (await r.json()).reply; else api = false;
+        clearTimeout(to); if (r.ok || r.status === 429) reply = (await r.json()).reply; else api = false;
       } catch { api = false; }
       if (!api) chat.querySelector("#bd-status").textContent = "scripted answers";
     }

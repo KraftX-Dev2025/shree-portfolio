@@ -312,7 +312,7 @@ if (S.showreel) {
         const ctl = new AbortController(); const to = setTimeout(() => ctl.abort(), 15000);
         const r = await fetch("/api/twin", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ messages: history.slice(-12) }), signal: ctl.signal });
         clearTimeout(to);
-        if (r.ok) reply = (await r.json()).reply; else { api = false; $("#twin-note").hidden = false; }
+        if (r.ok) reply = (await r.json()).reply; else if (r.status === 429) reply = (await r.json()).reply; else { api = false; $("#twin-note").hidden = false; }
       } catch { api = false; $("#twin-note").hidden = false; }
     }
     if (!reply) { await new Promise((r) => setTimeout(r, 500 + Math.random() * 500)); reply = local(q); }
