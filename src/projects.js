@@ -35,6 +35,8 @@
     drawFilters(); draw();
   });
 
+  const NET = [["instagram", "Instagram"], ["linkedin", "LinkedIn"], ["x", "X"], ["youtube", "YouTube"], ["facebook", "Facebook"]];
+  const socials = (l) => { const a = NET.filter(([k]) => l && l[k]).map(([k, t]) => `<a href="${esc(l[k])}" target="_blank" rel="noopener">${t}</a>`); return a.length ? `<div class="soc">${a.join("<span>·</span>")}</div>` : ""; };
   const card = (v) => `<article class="card">
     <div class="meta">${TYPES[v.type] ? `<span class="type t-${esc(v.type)}">${esc(TYPES[v.type])}</span>` : "<span></span>"}<span>${esc(v.year)}</span></div>
     <h3>${esc(v.name)}</h3>
@@ -44,6 +46,7 @@
       ${v.href ? `<a class="go" href="${esc(v.href)}" target="_blank" rel="noopener">${esc(host(v.href))} ↗</a>` : `<span class="soon">Case study soon</span>`}
       ${v.repo ? `<a class="repo" href="${esc(v.repo)}" target="_blank" rel="noopener">Code</a>` : ""}
     </div>
+    ${socials(v.links)}
   </article>`;
 
   const list = document.getElementById("list");

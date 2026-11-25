@@ -4,6 +4,7 @@
    type:     "venture" (mine), "client" (built by KraftX for a client), "experiment" (side build / tool), "" (role not confirmed: no label shown).
    href:     live link, or "" if not public yet (the card still shows).
    repo:     public GitHub link, optional.
+   links:    official socials, optional: { instagram, linkedin, x, youtube, facebook }. Only add links the brand itself publishes.
    stack:    short, optional.
    year:     optional. */
 window.INDUSTRIES = {
@@ -33,7 +34,7 @@ window.VENTURES = [
   // Media, Film & Entertainment
   { name: "CineOps", industry: "media", type: "venture", year: "2026", blurb: "AI production partner for indie filmmakers: script breakdown, budgets, schedules and vendors.", stack: "React · Gemini", href: "https://cineops-production-partner.vercel.app", repo: "https://github.com/KraftX-Dev2025/cineops-production-partner" },
   { name: "Fish Tank", industry: "media", type: "venture", year: "2024", blurb: "Business meets entertainment. An end-to-end launchpad for talented founders.", stack: "Format · Events", href: "https://fish-tank-sigma.vercel.app" },
-  { name: "Mirch Masala Studios", industry: "media", type: "venture", year: "2025", blurb: "Meme-first, bold content marketing. MG Road's marketing mafia.", stack: "Next.js", href: "https://mirch-masala-studios.vercel.app" },
+  { name: "Mirch Masala Studios", industry: "media", type: "venture", year: "2025", blurb: "Meme-first, bold content marketing. MG Road's marketing mafia.", stack: "Next.js", href: "https://mirch-masala-studios.vercel.app", links: {instagram: "https://www.instagram.com/onlymmsofficial/", facebook: "https://www.facebook.com/people/OnlyMms/61575574449959/"} },
   { name: "GRRR Nights", industry: "media", type: "venture", year: "2026", blurb: "Underground night format in Mumbai, from showflow to graffiti promos.", stack: "Events", href: "" },
   { name: "18Fanz", industry: "media", type: "client", year: "2026", blurb: "Fan-economy platform. KraftX wrote the MVP and the product plan.", stack: "Product · MVP", href: "" },
 
@@ -45,16 +46,16 @@ window.VENTURES = [
   { name: "Leo Club app", industry: "community", type: "client", year: "2025", blurb: "Mobile app for a Leo Club chapter: members, events and service projects.", stack: "React Native", href: "" },
 
   // Health & Wellness
-  { name: "Kraftodent", industry: "health", type: "venture", year: "2025", blurb: "AI automation for modern dental practices in India.", stack: "Next.js · AI", href: "https://kraftodent.vercel.app" },
+  { name: "Kraftodent", industry: "health", type: "venture", year: "2025", blurb: "AI automation for modern dental practices in India.", stack: "Next.js · AI", href: "https://kraftodent.vercel.app", links: {instagram: "https://instagram.com/kraftodent", linkedin: "https://www.linkedin.com/company/kraftodent/", facebook: "https://facebook.com/kraftodent"} },
   { name: "Tefline", industry: "health", type: "client", year: "2025", blurb: "The epicenter for lifestyle medicine, plus a wellness companion product.", stack: "Next.js · Supabase", href: "https://tefline-website.vercel.app" },
-  { name: "Eazy Ayurveda", industry: "health", type: "client", year: "2025", blurb: "Natural Ayurvedic remedies brand: site, Shopify store, Amazon listings and campaigns.", stack: "Next.js · Shopify · webhooks", href: "https://eazy-ayurveda.vercel.app" },
-  { name: "The Trainer", industry: "health", type: "client", year: "2025", blurb: "Site for fitness and nutrition coach Anish Palesha.", stack: "Next.js", href: "https://www.apthetrainer.com" },
+  { name: "Eazy Ayurveda", industry: "health", type: "client", year: "2025", blurb: "Natural Ayurvedic remedies brand: site, Shopify store, Amazon listings and campaigns.", stack: "Next.js · Shopify · webhooks", href: "https://eazy-ayurveda.vercel.app", links: {instagram: "https://instagram.com/eazyayurveda"} },
+  { name: "The Trainer", industry: "health", type: "client", year: "2025", blurb: "Site for fitness and nutrition coach Anish Palesha.", stack: "Next.js", href: "https://www.apthetrainer.com", links: {instagram: "https://www.instagram.com/thetraineranish", youtube: "https://youtube.com/@thetraineranish01", linkedin: "https://www.linkedin.com/in/anish-palesha-5458291b1"} },
   { name: "Aadhar Foundation", industry: "health", type: "client", year: "2025", blurb: "Health, nutrition and medical research for underserved communities.", stack: "Next.js", href: "" },
   { name: "Easemyhealth", industry: "health", type: "venture", year: "2025", blurb: "Healthcare access brand: identity and product concept.", stack: "Brand", href: "" },
   { name: "Assistift", industry: "health", type: "",  year: "2025", blurb: "Assistive fitness product, from prototype to pitch deck and demo.", stack: "Hardware · Pitch", href: "" },
 
   // Finance & Real Estate
-  { name: "Kuvera Kapital", industry: "finance", type: "venture", year: "2025", blurb: "Realty and capital advisory.", stack: "Next.js", href: "https://www.kuverakapital.com" },
+  { name: "Kuvera Kapital", industry: "finance", type: "venture", year: "2025", blurb: "Realty and capital advisory.", stack: "Next.js", href: "https://kuvera-pied.vercel.app" },
   { name: "IB OS", industry: "finance", type: "venture", year: "2026", blurb: "Investment-banking OS: deal management, workflows and AI-generated documents for IB, PE and wealth firms.", stack: "TypeScript · AI", href: "" },
   { name: "PropOS", industry: "finance", type: "venture", year: "2026", blurb: "Operating system for real-estate teams: leads, proposals and pipeline.", stack: "TypeScript", href: "https://propos-plum.vercel.app" },
   { name: "Auris Residences", industry: "finance", type: "client", year: "2026", blurb: "Launch page for luxury 4 and 5 BHK apartments in Dubai.", stack: "HTML", href: "https://dubai-residences.vercel.app" },
@@ -62,14 +63,14 @@ window.VENTURES = [
   { name: "Bombay House", industry: "finance", type: "client", year: "2026", blurb: "AI growth pitch for a luxury property brand.", stack: "Strategy", href: "" },
 
   // Education & Impact
-  { name: "Mentoverse", industry: "education", type: "",  year: "2025", blurb: "Helping people find their next step in education, career and beyond.", stack: "Next.js · Firebase", href: "https://mentoverse.co.in" },
+  { name: "Mentoverse", industry: "education", type: "",  year: "2025", blurb: "Helping people find their next step in education, career and beyond.", stack: "Next.js · Firebase", href: "https://mentoverse.co.in", links: {instagram: "https://instagram.com/mentoverse_", linkedin: "https://www.linkedin.com/company/mentoverse/", x: "https://twitter.com/mentoverse", facebook: "https://www.facebook.com/mentoverse"} },
   { name: "Morphoverse", industry: "education", type: "venture", year: "2025", blurb: "Emotional intelligence for leaders.", stack: "Next.js", href: "https://morphoverse-ecru.vercel.app" },
-  { name: "With You NGO", industry: "education", type: "client", year: "2025", blurb: "Site for an NGO empowering communities since 2015.", stack: "Next.js", href: "https://v0-website-development-brief-mauve.vercel.app" },
+  { name: "With You NGO", industry: "education", type: "client", year: "2025", blurb: "Site for an NGO empowering communities since 2015.", stack: "Next.js", href: "https://v0-website-development-brief-mauve.vercel.app", links: {instagram: "https://www.instagram.com/withyou.ngo/", linkedin: "https://www.linkedin.com/company/withyoufoundation/", facebook: "https://www.facebook.com/profile.php?id=100064656521136"} },
   { name: "IIHM", industry: "education", type: "client", year: "2025", blurb: "Site for the International Institute of Hotel Management.", stack: "React", href: "https://iihm.vercel.app" },
   { name: "Saamrajya.tech", industry: "education", type: "client", year: "2025", blurb: "Strategic political consulting in India.", stack: "Next.js", href: "https://saamrajhya-tech.vercel.app" },
 
   // Design, Interiors & Fashion
-  { name: "Kathnicc", industry: "design", type: "client", year: "2025", blurb: "Luxury interior design studio.", stack: "Next.js", href: "https://kathnicc-website.vercel.app" },
+  { name: "Kathnicc", industry: "design", type: "client", year: "2025", blurb: "Luxury interior design studio.", stack: "Next.js", href: "https://kathnicc-website.vercel.app", links: {instagram: "https://www.instagram.com/kathnicc_/"} },
   { name: "Stone Haus Studio", industry: "design", type: "client", year: "2026", blurb: "Design studio with an A-Z index of its work.", stack: "HTML", href: "https://stonehaus.in", repo: "https://github.com/KraftX-Dev2025/stonehausstudio" },
   { name: "Violate", industry: "design", type: "client", year: "2026", blurb: "Fashion label site, plus a live wishlist and AI vendor finder.", stack: "HTML · AI", href: "https://violate-three.vercel.app" },
   { name: "Alphabetical Studio", industry: "design", type: "client", year: "2026", blurb: "Portfolio site for an art-direction studio.", stack: "Web", href: "" },
@@ -82,8 +83,8 @@ window.VENTURES = [
   { name: "Tossin Pizza", industry: "food", type: "client", year: "2026", blurb: "Growth proposal for a pizza brand.", stack: "Strategy", href: "" },
 
   // Commerce & Services
-  { name: "Oriental Sports", industry: "commerce", type: "client", year: "2026", blurb: "Shopify store, custom theme and app for a sports-goods brand.", stack: "Shopify · React Router", href: "" },
-  { name: "Tailoring Turba", industry: "commerce", type: "client", year: "2025", blurb: "Custom T-shirt printing with an in-browser designer.", stack: "Next.js", href: "https://tailoringturba.com" },
+  { name: "Oriental Sports", industry: "commerce", type: "client", year: "2026", blurb: "Shopify store, custom theme and app for a sports-goods brand.", stack: "Shopify · React Router", href: "", links: {instagram: "https://instagram.com/oriental_sportspune"} },
+  { name: "Tailoring Turba", industry: "commerce", type: "client", year: "2025", blurb: "Custom T-shirt printing with an in-browser designer.", stack: "Next.js", href: "https://tailoringturba.com", links: {instagram: "https://www.instagram.com/tailoringturba", linkedin: "https://www.linkedin.com/company/tailoringturba", facebook: "https://www.facebook.com/tailoringturba"} },
   { name: "Adv. Shivraj", industry: "commerce", type: "client", year: "2026", blurb: "Site for an advocate and legal counsel.", stack: "HTML", href: "https://adv-shivraj.vercel.app" },
   { name: "Nutrivita", industry: "commerce", type: "client", year: "2025", blurb: "Company overview film.", stack: "Video", href: "" },
 
