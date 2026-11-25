@@ -1,5 +1,7 @@
 {
   "buildCommand": "bash build.sh",
   "outputDirectory": "site",
-  "cleanUrls": true
+  "cleanUrls": true,
+  "rewrites": [{ "source": "/prompt", "destination": "/prompt.txt" }],
+  "headers": [{ "source": "/prompt(.txt)?", "headers": [{ "key": "Content-Type", "value": "text/plain; charset=utf-8" }] }]
 }

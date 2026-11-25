@@ -15,11 +15,27 @@ window.SITE = {
   ]
 };
 
-/* ---------- "Download my memory" card ----------
-   Traits are scored out of 10 and drawn as a radar. Edit freely. */
+/* ---------- "Download my memory": the bio card + POV prompt ----------
+   The card (PNG) is drawn from this object. The full "Think like Shree" prompt lives in src/prompt.txt
+   (also served at /prompt). Use confirmed facts only. */
 window.PERSONA = {
-  traits: [["Builder", 10], ["Curiosity", 10], ["Comedy", 8], ["Discipline", 8], ["Tech", 9], ["Taste", 8], ["Wanderlust", 8], ["Spirit", 7]],
-  core: ["Origami", "Robocon", "75 Hard", "KraftX", "Ashwathhama", "250 people · 19 minutes"],
+  archetype: "An engineer who ships, then does stand-up about it.",
+  bio: "Shree is a mechanical engineer from MIT Pune. In 2019 his Robocon team built a four-legged robot that walks like a horse and took it to the nationals in Delhi. In 2023 he left a corporate job, started KraftX with Prateek and founded Hypercurated. Since then they have shipped 54 products across 10 industries.",
+  thinks: [
+    "Start from a real problem. He keeps a list of 1,000.",
+    "Ship first. Code is cheap and can be rebuilt.",
+    "Everyone sells. There won't be a right time.",
+    "Your data is yours.",
+    "Personalisation is the layer worth automating."
+  ],
+  works: [
+    "Small crews of rebels who still deliver.",
+    "Hires for learnability.",
+    "29 parts runs in one Robocon season.",
+    "Training since 2018. Finished 75 Hard."
+  ],
+  askAbout: "Building from zero, AI twins, or holding a room for 19 minutes.",
+  dontAsk: "His opinion on your deck past slide 10.",
   banter: "Never thought I'd end up in your Downloads folder too.",
   url: "shree-hypercurator-and-serial-chiller.vercel.app"
 };
