@@ -1,303 +1,106 @@
-<title>Shree · Founder, KraftX and Hypercurated</title>
+<title>shree.os · Founder, KraftX and Hypercurated</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="Shree, founder of KraftX and Hypercurated. 54 products across 10 industries since 2023, a Robocon national finalist, and a stand-up comic.">
+<meta name="description" content="Shree, founder of KraftX and Hypercurated. 54 products across 10 industries since 2023.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+Devanagari:wght@600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700;800&display=swap">
 <link rel="stylesheet" href="site.css">
-<style>
-/* ---------- hero ---------- */
-.hero { position: relative; padding: 0; min-height: min(86vh, 820px); display: grid; align-items: end; overflow: hidden; }
-.hero video, .hero canvas { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-.hero .shade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(7,8,12,.1) 0%, rgba(7,8,12,.3) 50%, var(--ink) 100%); }
-.scroll-cue { font: 400 12px/1 var(--mono); letter-spacing: .16em; text-transform: uppercase; color: var(--mute); text-decoration: none; margin-top: 12px; }
-.scroll-cue:hover { color: var(--paper); }
-button.link { background: none; border: 0; padding: 0; font: 400 12px/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--mute); cursor: pointer; }
-button.link:hover { color: var(--paper); }
-.hero .wrap { position: relative; width: 100%; padding-block: 48px 56px; display: grid; gap: 28px; }
-.hero h1 { font-size: clamp(72px, 16vw, 220px); font-weight: 500; letter-spacing: -.06em; line-height: .85; }
-.hero h1 span { color: var(--diamond); }
-.hero .row { display: flex; flex-wrap: wrap; gap: 24px; align-items: end; justify-content: space-between; }
-.hero .tag { font: 400 clamp(19px, 2.2vw, 26px)/1.3 var(--display); max-width: 22ch; }
-.hero .intro { color: var(--mute); max-width: 46ch; margin: 0; }
-.reel-badge { position: absolute; top: 20px; right: max(20px, env(safe-area-inset-right, 0px)); font: 500 11px/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--mute); display: flex; gap: 8px; align-items: center; }
-.reel-badge b { width: 8px; height: 8px; border-radius: 50%; background: #ff4d4d; animation: rec 1.4s infinite; }
-@keyframes rec { 50% { opacity: .2; } }
-.ticker { border-bottom: 1px solid var(--line); overflow: hidden; white-space: nowrap; padding-block: 14px; }
-.ticker div { display: inline-flex; gap: 40px; animation: tick 40s linear infinite; font: 500 15px/1 var(--mono); color: var(--mute); text-transform: uppercase; letter-spacing: .08em; }
-.ticker span::after { content: "◆"; color: var(--diamond); margin-left: 40px; }
-@keyframes tick { to { transform: translateX(-50%); } }
+<link rel="stylesheet" href="os.css">
+</head>
+<body class="os">
 
-/* ---------- graph ---------- */
-.graph-box { display: grid; grid-template-columns: minmax(0, 1fr) 280px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-#graph { width: 100%; height: 600px; display: block; cursor: grab; touch-action: none; }
-#graph.dragging { cursor: grabbing; }
-.graph-side { padding: 32px 0 32px 32px; display: flex; flex-direction: column; gap: 14px; min-width: 0; }
-.graph-side h3 { font-size: 28px; font-weight: 500; }
-.graph-side p { margin: 0; color: var(--mute); }
-.graph-side .crumbs { font: 11px/1.4 var(--mono); color: var(--mute); letter-spacing: .06em; }
-.graph-side .tools { margin-top: auto; display: flex; gap: 20px; }
-.graph-side .tools .btn { padding: 10px 14px; font-size: 13px; }
-.hint { font: 12px/1.4 var(--mono); color: var(--mute); }
-@media (max-width: 860px) { .graph-box { grid-template-columns: 1fr; } .graph-side { padding: 24px 0; } #graph { height: 460px; } }
-
-/* ---------- timeline ---------- */
-#journey { padding: 0; }
-#journey .intro-band { padding-block: clamp(64px, 10vw, 120px) 24px; }
-.scroller { position: relative; }
-.stage { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 58px); height: calc(100vh - 58px - env(safe-area-inset-top, 0px)); min-height: 520px; display: grid; grid-template-columns: minmax(0, 380px) minmax(0, 1fr); gap: 24px; align-items: center; }
-.card { display: grid; gap: 14px; align-content: center; }
-.card .years { font: 400 13px/1 var(--mono); color: var(--diamond); letter-spacing: .12em; }
-.card h3 { font-size: clamp(30px, 4vw, 50px); font-weight: 500; letter-spacing: -.03em; }
-.card p { margin: 0; color: var(--mute); font-size: 17px; max-width: 40ch; }
-.card .fade { transition: opacity .35s, transform .35s; }
-.card.swap .fade { opacity: 0; transform: translateY(8px); }
-.dots { display: flex; gap: 6px; margin-top: 10px; flex-wrap: wrap; }
-.dots i { width: 22px; height: 4px; border-radius: 2px; background: var(--line); transition: background .3s; }
-.dots i.on { background: var(--diamond); }
-.scene { position: relative; width: 100%; aspect-ratio: 8 / 5.4; max-width: 100%; }
-.scene svg { width: 100%; height: 100%; display: block; overflow: visible; }
-.bubble { position: absolute; left: 1%; bottom: 50%; max-width: 46%; background: var(--paper); color: var(--ink); font: 600 15px/1.3 var(--body); padding: 10px 14px; border-radius: 16px 16px 16px 4px; box-shadow: 0 10px 30px rgba(0,0,0,.4); transition: opacity .25s, transform .25s; }
-.bubble.swap { opacity: 0; transform: translateY(6px) scale(.97); }
-.watcher { position: absolute; left: 2%; top: 2%; font: 500 11px/1.3 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--spark); background: none; border: 0; padding: 4px 0; cursor: pointer; display: flex; gap: 8px; align-items: center; }
-.watcher b { width: 8px; height: 8px; border-radius: 50%; background: var(--spark); box-shadow: 0 0 0 0 var(--spark); animation: pulse 1.8s infinite; }
-@keyframes pulse { 70% { box-shadow: 0 0 0 10px rgba(255,181,71,0); } }
-.twin-cta { opacity: 0; pointer-events: none; transition: opacity .4s; }
-.twin-cta.show { opacity: 1; pointer-events: auto; }
-@media (max-width: 860px) {
-  .stage { grid-template-columns: 1fr; align-content: center; gap: 8px; }
-  .card { order: 2; } .card h3 { font-size: 30px; } .card p { font-size: 15px; }
-  .bubble { font-size: 13px; }
-}
-
-/* character animation */
-.arm { transform-box: fill-box; transform-origin: 50% 6%; transition: transform .5s cubic-bezier(.3,1.4,.5,1); }
-.prop { opacity: 0; transition: opacity .4s; }
-.prop.on { opacity: 1; }
-.bob { animation: bob 2.4s ease-in-out infinite; }
-@keyframes bob { 50% { transform: translateY(-10px); } }
-.type { animation: type .25s ease-in-out infinite alternate; }
-@keyframes type { to { transform: translateY(4px); } }
-.wave { animation: wave .7s ease-in-out infinite alternate; }
-@keyframes wave { to { transform: rotate(-25deg); } }
-.lift { animation: lift 1.6s ease-in-out infinite; }
-@keyframes lift { 50% { transform: translateY(26px); } }
-.jump { animation: jump 1.1s cubic-bezier(.3,0,.4,1) infinite; }
-@keyframes jump { 40% { transform: translateY(-46px); } 70% { transform: translateY(0); } }
-.spin { animation: spin 3s linear infinite; transform-box: view-box; }
-@keyframes spin { to { transform: rotate(360deg); } }
-.blink { animation: blinkk 1s steps(2) infinite; }
-@keyframes blinkk { 50% { opacity: 0; } }
-.fly { animation: fly 6s linear infinite; }
-@keyframes fly { from { transform: translateX(-120px); } to { transform: translateX(520px); } }
-.spark { animation: sparkk .5s steps(2) infinite; }
-@keyframes sparkk { 50% { opacity: 0; } }
-.sway { animation: sway 2s ease-in-out infinite alternate; transform-box: fill-box; transform-origin: 50% 0; }
-@keyframes sway { from { transform: rotate(-6deg); } to { transform: rotate(6deg); } }
-.glow { animation: glow 2s ease-in-out infinite; }
-@keyframes glow { 50% { opacity: .45; } }
-
-/* ---------- twin ---------- */
-.twin-grid { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 40px; align-items: start; }
-.twin-copy h2 { font-size: clamp(34px, 5vw, 60px); font-weight: 500; letter-spacing: -.03em; }
-.twin-copy h2 em { font-style: normal; color: var(--spark); }
-.twin-copy ul { list-style: none; padding: 0; margin: 24px 0 0; display: grid; gap: 10px; color: var(--mute); }
-.twin-copy li { display: flex; gap: 12px; }
-.twin-copy li::before { content: "◆"; color: var(--diamond); }
-.chat { border: 1px solid var(--line); border-radius: 14px; background: var(--ink); display: grid; grid-template-rows: auto minmax(0, 1fr) auto; height: 520px; overflow: hidden; }
-.chat header { display: flex; gap: 12px; align-items: center; padding: 14px 18px; border-bottom: 1px solid var(--line); }
-.chat header .av { width: 38px; height: 38px; border-radius: 50%; background: var(--spark); display: grid; place-items: center; color: var(--ink); font: 800 16px var(--display); }
-.chat header small { display: block; color: var(--mute); font: 11px var(--mono); }
-.log { overflow-y: auto; padding: 18px; display: flex; flex-direction: column; gap: 10px; }
-.msg { max-width: 85%; padding: 10px 14px; border-radius: 14px; font-size: 15px; line-height: 1.45; }
-.msg.twin { background: var(--panel); border-bottom-left-radius: 4px; }
-.msg.me { align-self: flex-end; background: var(--diamond); color: var(--ink); border-bottom-right-radius: 4px; }
-.msg.typing { color: var(--mute); font-family: var(--mono); }
-.chips { display: flex; gap: 6px; flex-wrap: wrap; padding: 0 18px 10px; }
-.chips button { font: 12px var(--mono); padding: 6px 10px; border-radius: 999px; border: 1px solid var(--line); background: transparent; color: var(--mute); cursor: pointer; }
-.chips button:hover { color: var(--paper); border-color: var(--diamond); }
-.chat form { display: flex; gap: 8px; padding: 12px; border-top: 1px solid var(--line); }
-.chat input { flex: 1; min-width: 0; background: var(--ink); border: 1px solid var(--line); color: var(--paper); border-radius: 999px; padding: 12px 16px; font: 15px var(--body); }
-.chat input:focus { outline: none; border-color: var(--diamond); }
-@media (max-width: 860px) { .twin-grid { grid-template-columns: 1fr; } }
-
-/* ---------- projects ---------- */
-.proj { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr)); column-gap: 48px; border-top: 1px solid var(--line); }
-.proj article { padding: 32px 0; display: grid; gap: 10px; align-content: start; min-width: 0; border-bottom: 1px solid var(--line); }
-.proj .meta { display: flex; justify-content: space-between; font: 12px var(--mono); color: var(--mute); text-transform: uppercase; letter-spacing: .1em; }
-.proj h3 { font-size: 28px; font-weight: 500; letter-spacing: -.02em; }
-.proj p { margin: 0; color: var(--mute); }
-.proj .tags { display: flex; gap: 6px; flex-wrap: wrap; }
-.proj .tags span { font: 11px var(--mono); padding: 4px 8px; border-radius: 6px; background: var(--diamond-soft); color: var(--diamond); }
-.proj a.go { font: 600 13px var(--body); color: var(--diamond); text-decoration: none; }
-
-/* ---------- board teaser + footer ---------- */
-.teaser { display: flex; flex-wrap: wrap; gap: 24px; justify-content: space-between; align-items: end; }
-.teaser h2 { font-size: clamp(34px, 5vw, 60px); font-weight: 500; letter-spacing: -.03em; }
-footer { border-top: 1px solid var(--line); }
-footer .wrap { padding-block: 32px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px; color: var(--mute); font: 13px var(--mono); }
-.fab { position: fixed; right: max(18px, calc(env(safe-area-inset-right, 0px) + 18px)); bottom: max(18px, calc(env(safe-area-inset-bottom, 0px) + 18px)); z-index: 40; background: var(--spark); color: var(--ink); border-color: var(--spark); box-shadow: 0 10px 30px rgba(0,0,0,.5); }
-.fab:hover { background: var(--paper); border-color: var(--paper); }
-.pati-band { padding-block: 0 72px; }
-.pati { margin: 0 auto; max-width: 560px; background: #f4f1ea; color: #14120e; border: 3px solid #14120e; border-radius: 4px; padding: 26px 30px 22px; transform: rotate(-1deg); box-shadow: 0 18px 40px rgba(0,0,0,.35); }
-.pati figcaption { font: 700 26px/1.2 "Noto Sans Devanagari", var(--display); color: #b3261e; text-align: center; margin-bottom: 14px; }
-.pati ol { margin: 0; padding-left: 22px; display: grid; gap: 10px; font: 500 16px/1.45 var(--body); }
-.pati .sig { margin: 16px 0 0; text-align: right; font: 600 15px/1.3 "Noto Sans Devanagari", var(--body); color: #b3261e; }
-.hero .tag-wrap { display: grid; gap: 14px; }
-.hero .tag { margin: 0; }
-.proof { padding-block: 40px; border-bottom: 1px solid var(--line); }
-.proof-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 130px), 1fr)); gap: 28px 32px; }
-.proof-row a, .proof-row div { text-decoration: none; display: grid; gap: 8px; }
-.proof-row b { font: 500 clamp(36px, 4.6vw, 56px)/1 var(--display); letter-spacing: -.03em; color: var(--paper); }
-.proof-row span { font: 12px var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--mute); }
-.proof-row a:hover b { color: var(--diamond); }
-.twin-note { margin: 0; padding: 10px 16px; font: 12px/1.5 var(--mono); color: var(--spark); border-bottom: 1px solid var(--line); }
-.twin-note a { color: inherit; }
-</style>
-
-<nav class="nav" aria-label="Main">
-  <div class="wrap">
-    <a class="brand" href="#top"><i></i>Shree</a>
-    <ul>
-      <li><a href="#journey">Story</a></li>
-      <li><a href="#memory">Memory</a></li>
-      <li class="keep"><a href="projects.html">Projects</a></li>
-      <li class="keep"><a href="whiteboard.html">Thoughts</a></li>
-      <li class="keep twin-link"><a href="#twin">Talk to my twin</a></li>
-    </ul>
-  </div>
-</nav>
-
-<header class="hero" id="top">
-  <canvas id="reel" aria-hidden="true"></canvas>
-  <div class="shade"></div>
-  <div class="wrap">
-    <h1>Shree<span>.</span></h1>
-    <div class="row">
-      <div class="tag-wrap"><span class="eyebrow" id="hero-eyebrow">Founder · KraftX · Hypercurated</span><p class="tag" id="tagline"></p></div>
-      <p class="intro" id="intro"></p>
-    </div>
-    <a class="scroll-cue" href="#journey">The story ↓</a>
-  </div>
+<header class="bar" aria-label="Status bar">
+  <span class="logo">◆ shree.os</span>
+  <nav class="ws" aria-label="Main">
+    <a href="#home" class="on">1:home</a><a href="#work">2:work</a><a href="#story">3:story</a><a href="#memory">4:memory</a><a href="#twin">5:twin</a><a href="projects.html">6:projects</a>
+  </nav>
+  <span class="right"><span id="clock">--:--</span> · <span class="ok">●</span> online</span>
 </header>
 
-<section class="proof" aria-label="At a glance">
-  <div class="wrap"><div class="proof-row" id="proof"></div></div>
-</section>
+<main class="desk">
 
-<section id="work">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="eyebrow">Work</span>
-      <h2>Selected work.</h2>
+  <section class="pane hero" id="home">
+    <div class="tb"><span>~/shree</span><span>zsh · 120×40</span></div>
+    <div class="body">
+      <p class="cmd"><b>shree@kraftx</b>:<i>~</i>$ whoami</p>
+      <p class="out">Shree. Founder · KraftX · Hypercurated</p>
+      <p class="cmd"><b>shree@kraftx</b>:<i>~</i>$ cat headline.txt</p>
+      <h1 class="type" id="headline">I build AI products and the brands around them.</h1>
+      <p class="out dim">Mechanical engineer from MIT Pune. Took a walking robot to the Robocon nationals, left a corporate job in 2023, and have shipped 54 products since.</p>
+      <p class="cmd"><b>shree@kraftx</b>:<i>~</i>$ ./stats --since 2023</p>
+      <pre class="stats" id="stats"></pre>
+      <p class="cmd"><b>shree@kraftx</b>:<i>~</i>$ <span class="caret"></span></p>
     </div>
-    <div class="proj" id="proj"></div>
-    <div style="margin-top:40px"><a class="btn primary" href="projects.html">All projects, by industry →</a></div>
-  </div>
-</section>
+  </section>
 
-<section id="journey">
-  <div class="wrap intro-band">
-    <div class="sec-head" style="margin:0">
-      <span class="eyebrow">Story</span>
-      <h2>From paper cranes to AI.</h2>
-      <p class="lede">27 years in 11 scenes. The kid on the crate is a younger me, rebuilt as an AI twin. He takes questions at the end.</p>
+  <section class="pane core" aria-label="Ashwathhama core">
+    <div class="tb"><span>ashwathhama.core</span><span>render · live</span></div>
+    <div class="body"><canvas id="sphere" aria-hidden="true"></canvas>
+      <pre class="meta">model ......... ashwathhama (2025)
+twin .......... online
+memory nodes .. <span id="nodeCount">--</span>
+mood .......... dry</pre>
     </div>
-  </div>
-  <div class="scroller" id="scroller">
-    <div class="stage wrap">
-      <div class="card" id="card">
-        <div class="years fade" id="c-years"></div>
-        <h3 class="fade" id="c-title"></h3>
-        <p class="fade" id="c-diary"></p>
-        <a class="btn primary twin-cta" id="twin-cta" href="#twin">Ask the twin →</a>
-      </div>
-      <div class="scene">
-        <svg id="scene" viewBox="0 0 800 540" role="img" aria-label="An illustrated character doing life activities while a small boy watches"></svg>
-        <div class="bubble" id="bubble"></div>
-      </div>
-    </div>
-  </div>
-</section>
+  </section>
 
-<section id="memory">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="eyebrow">Memory map</span>
-      <h2>Everything I've picked up, on one map.</h2>
-      <p class="lede">Click a node to open it. Drag to rearrange.</p>
-      <div><button class="link" id="mem-dl" type="button">Download my bio + POV prompt ↓</button></div>
+  <section class="pane work" id="work">
+    <div class="tb"><span>~/projects</span><span>ls --featured</span></div>
+    <div class="body">
+      <p class="cmd"><b>shree@kraftx</b>:<i>~</i>$ ls -l ~/projects --featured</p>
+      <div class="ls" id="ls"></div>
+      <a class="go" href="projects.html">cd ~/projects  <span class="dim"># all 54, by industry</span> →</a>
     </div>
-    <div class="graph-box">
-      <canvas id="graph" aria-label="Interactive memory graph"></canvas>
-      <aside class="graph-side" aria-live="polite">
-        <div class="crumbs" id="g-crumbs">shree</div>
-        <h3 id="g-title">Shree</h3>
-        <p id="g-note">Click a node to expand it.</p>
-        <p class="hint" id="g-count"></p>
-        <div class="tools">
-          <button class="link" id="g-all" type="button">Open all</button>
-          <button class="link" id="g-reset" type="button">Reset</button>
-        </div>
-      </aside>
-    </div>
-  </div>
-</section>
+  </section>
 
-<section id="twin">
-  <div class="wrap twin-grid">
-    <div class="twin-copy">
-      <span class="eyebrow">Digital twin</span>
-      <h2>Ask the <span>twin</span>.</h2>
-      <p class="lede">He knows the stories, the companies and the stand-up material. Ask what you'd ask me.</p>
+  <section class="pane story" id="story">
+    <div class="tb"><span>~/story</span><span>git log --oneline</span></div>
+    <div class="body">
+      <p class="cmd"><b>shree@kraftx</b>:<i>~/story</i>$ git log --reverse --format="%h %ad %s"</p>
+      <p class="out dim"># From paper cranes to AI. 27 years, 11 commits.</p>
+      <ol class="log" id="log"></ol>
     </div>
-    <div class="chat">
-      <header><div class="av">S</div><div><strong>Shree's twin</strong><small id="twin-status">online</small></div></header>
-      <p class="twin-note" id="twin-note" hidden>Dupari 1 te 4 twin jhopla aahe. Urgent asel tar <a href="whiteboard.html">Thoughts</a> var lihun theva.</p>
-      <div class="log" id="log" aria-live="polite"></div>
-      <div>
-        <div class="chips" id="chips"></div>
-        <form id="chat-form" autocomplete="off">
-          <label for="chat-in" class="sr" hidden>Message</label>
-          <input id="chat-in" placeholder="Ask about KraftX, Robocon, stand-up…" maxlength="400">
-          <button class="btn primary" type="submit">Send</button>
-        </form>
-      </div>
-    </div>
-  </div>
-</section>
+  </section>
 
-<section style="padding-top:0">
-  <div class="wrap">
-    <div class="teaser">
-      <div style="display:grid;gap:12px;max-width:640px">
-        <span class="eyebrow">Thoughts</span>
-        <h2>Notes from my diary.</h2>
-        <p class="lede" style="margin:0">Lines from the diary on an open board. Link two, or add your own.</p>
-      </div>
-      <a class="btn" href="whiteboard.html">Open the board →</a>
+  <section class="pane memory" id="memory">
+    <div class="tb"><span>~/memory</span><span>tree -L 1</span></div>
+    <div class="body">
+      <p class="cmd"><b>shree@kraftx</b>:<i>~</i>$ tree ~/memory -L 1</p>
+      <pre class="tree" id="tree"></pre>
+      <a class="go" href="https://shree-hypercurator-and-serial-chiller.vercel.app/#memory">open --graph →</a>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="pati-band" aria-label="Puneri pati">
-  <div class="wrap">
-    <figure class="pati">
-      <figcaption>कृपया नोंद घ्यावी</figcaption>
+  <section class="pane twin" id="twin">
+    <div class="tb"><span>twin@shree</span><span id="tstat">checking…</span></div>
+    <div class="body">
+      <p class="out dim"># An AI twin built from my stories. Ask what you'd ask me.</p>
+      <div class="chat" id="chat" aria-live="polite"></div>
+      <form id="cf" autocomplete="off"><label for="ci">twin&gt;</label><input id="ci" maxlength="400" placeholder="ask about KraftX, the walking robot, stand-up…"></form>
+      <div class="chips"><button type="button">what is kraftx</button><button type="button">the walking robot</button><button type="button">roast me</button></div>
+    </div>
+  </section>
+
+  <section class="pane motd" aria-label="Puneri pati">
+    <div class="tb"><span>/etc/motd</span><span>read-only</span></div>
+    <div class="body">
+      <p class="hd">कृपया नोंद घ्यावी</p>
       <ol>
         <li>Fakt "Hi, let's connect" asa message pathvu naye. Kaam asel tar seedha sanga.</li>
         <li>Pitch deck 10 slides peksha motha asel tar 11 vya slide pasun vachla jail.</li>
         <li>Dupari 1 te 4 reply milnar nahi.</li>
         <li>Twin la roast karayla sangitla tar to karel. Takrar chalnar nahi.</li>
       </ol>
-      <p class="sig">हुकुमावरून,<br>Shree</p>
-    </figure>
-  </div>
-</section>
+      <p class="sig">— हुकुमावरून, Shree</p>
+    </div>
+  </section>
 
-<footer><div class="wrap"><span>© 2026 Shree</span><span id="socials"></span></div></footer>
+</main>
+
+<footer class="status">
+  <span class="mode">NORMAL</span><span>index.os</span><span class="dim hide-m">utf-8 · unix</span><span class="grow"></span><span class="hide-m">54 products · 10 industries</span><span>© 2026 Shree</span>
+</footer>
 
 <script src="data.js"></script>
 <script src="ventures.js"></script>
-<script src="app.js"></script>
-<script src="memory-card.js"></script>
+<script src="os.js"></script>
 <script src="buddy.js"></script>
+</body>
