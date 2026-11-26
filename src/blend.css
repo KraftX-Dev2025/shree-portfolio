@@ -1,0 +1,82 @@
+/* Blend: shree.os details layered on the editorial site. Mono for labels and numbers, hairline terminal
+   frames on a few panels, a status-bar nav, ASCII bars, a git-log chapter index, /etc/motd and a vim footer.
+   Loaded after each page's own styles. */
+
+/* ---------- status-bar nav ---------- */
+.nav { border-bottom: 1px solid var(--line); }
+.nav .wrap { padding-block: 10px; }
+.nav li a { font: 400 12px/1 var(--mono); letter-spacing: .04em; text-transform: lowercase; padding: 8px 10px; }
+.nav li a[aria-current="page"] { color: var(--ink); background: var(--paper); border-radius: 3px; }
+.nav .stat { font: 11px var(--mono); color: var(--mute); white-space: nowrap; display: flex; gap: 8px; align-items: center; }
+.nav .stat .dot { color: var(--diamond); }
+.nav .stat .dot.off { color: var(--mute); }
+@media (max-width: 860px) { .nav .stat { display: none; } }
+
+/* ---------- typed prompt line ---------- */
+.cmd { margin: 0; font: 400 13px/1.4 var(--mono); color: var(--mute); letter-spacing: .02em; }
+.cmd .p { color: var(--diamond); }
+.caret { display: inline-block; width: .55em; height: 1.05em; margin-left: 2px; background: var(--paper); vertical-align: text-bottom; animation: bl-blink 1s steps(1) infinite; }
+@keyframes bl-blink { 50% { opacity: 0; } }
+
+/* ---------- terminal frames ---------- */
+.term { position: relative; border: 1px solid var(--line); border-radius: 12px; background: rgba(12,13,19,.6); padding: 40px 22px 22px; }
+.term::before { content: "●  ●  ●     " attr(data-title); position: absolute; left: 0; right: 0; top: 0; padding: 9px 14px; border-bottom: 1px solid var(--line); font: 11px var(--mono); color: var(--mute); letter-spacing: .02em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.chat.term { padding: 32px 0 0; }
+.chat.term::before { padding-block: 7px; }
+
+/* ---------- proof numbers with ASCII bars ---------- */
+.proof { padding-block: 32px; border-bottom: 0; }
+.proof .term { padding-bottom: 26px; }
+.proof-row b { font: 700 clamp(30px, 3.6vw, 44px)/1 var(--mono); letter-spacing: -.04em; }
+.proof-row i { font: 400 11px/1 var(--mono); font-style: normal; letter-spacing: -1px; color: var(--diamond); opacity: .85; }
+
+/* ---------- selected work: grid or ls -l ---------- */
+#work .sec-head { position: relative; }
+.view { display: flex; gap: 4px; font: 12px var(--mono); }
+.view button { background: none; border: 1px solid var(--line); color: var(--mute); font: inherit; padding: 5px 10px; border-radius: 3px; cursor: pointer; }
+.view button[aria-pressed="true"] { background: var(--paper); color: var(--ink); border-color: var(--paper); }
+#work .term { padding-top: 34px; }
+#work .proj { border-top: 0; }
+.proj.ls { grid-template-columns: 1fr; column-gap: 0; }
+.proj.ls article { grid-template-columns: 16ch 11ch 7ch minmax(0, 1fr) 6ch; align-items: baseline; gap: 14px; padding: 10px 6px; border-bottom: 1px dashed var(--line); }
+.proj.ls .meta { display: contents; }
+.proj.ls .meta span:first-child { order: 2; font: 11px var(--mono); color: var(--mute); text-transform: uppercase; }
+.proj.ls .meta span:last-child { order: 3; font: 11px var(--mono); color: var(--mute); }
+.proj.ls h3 { order: 1; font: 700 15px var(--mono); letter-spacing: 0; }
+.proj.ls p { order: 4; font: 13px var(--mono); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.proj.ls a.go { order: 5; font: 12px var(--mono); text-align: right; }
+.proj.ls .tags { display: none; }
+.proj.ls article:hover { background: var(--diamond-soft); }
+@media (max-width: 720px) { .proj.ls article { grid-template-columns: minmax(0, 1fr) auto; } .proj.ls .meta span, .proj.ls p { display: none; } }
+
+/* ---------- story: git log chapter index ---------- */
+.glog { list-style: none; margin: 18px 0 0; padding: 12px 0 0; border-top: 1px solid var(--line); display: grid; gap: 3px; font: 11.5px/1.5 var(--mono); color: #4f5366; }
+.glog li { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; transition: color .3s; }
+.glog .h { color: #6b5e9c; }
+.glog li.on { color: var(--paper); }
+.glog li.on .h { color: var(--diamond); }
+.glog li.on::before { content: "* "; color: var(--diamond); }
+@media (max-width: 860px) { .glog { display: none; } }
+
+/* ---------- twin: the dotted core beside the chat ---------- */
+.core { margin-top: 28px; display: grid; grid-template-columns: 180px minmax(0, 1fr); gap: 18px; align-items: center; }
+#sphere { width: 180px; height: 180px; }
+.core-meta { margin: 0; font: 11.5px/1.7 var(--mono); color: var(--mute); white-space: pre; }
+@media (max-width: 860px) { .core { grid-template-columns: 120px minmax(0, 1fr); } #sphere { width: 120px; height: 120px; } }
+
+/* ---------- Puneri pati as /etc/motd ---------- */
+.pati.term { transform: none; background: rgba(12,13,19,.75); color: var(--paper); border: 1px solid var(--line); box-shadow: none; padding: 46px 26px 20px; max-width: 640px; }
+.pati.term figcaption { color: #ff7a6b; text-align: left; font-size: 22px; }
+.pati.term ol { font: 400 13.5px/1.6 var(--mono); }
+.pati.term .sig { color: var(--mute); font-size: 13px; }
+
+/* ---------- vim footer ---------- */
+footer.vim .wrap { padding-block: 10px; gap: 14px; align-items: center; font: 11px var(--mono); }
+footer.vim .mode { background: var(--diamond); color: var(--ink); font-weight: 700; padding: 2px 8px; border-radius: 2px; }
+footer.vim .grow { flex: 1; }
+footer.vim .dim { color: #4f5366; }
+footer.vim #socials:empty { display: none; }
+@media (max-width: 600px) { footer.vim .hide-s { display: none; } }
+
+@media (prefers-reduced-motion: reduce) { .caret { animation: none; } }
+@media (max-width: 720px) { .nav li a { font-size: 11px; padding: 7px 6px; letter-spacing: 0; } }

@@ -5,8 +5,8 @@
   --line: #252839;       /* hairlines, edges */
   --paper: #eeeae2;      /* text */
   --mute: #8d91a4;       /* secondary text */
-  --diamond: #5aa9ff;    /* the blue diamond: accent, twin */
-  --diamond-soft: rgba(90, 169, 255, .14);
+  --diamond: #9b8cff;      /* one accent: periwinkle-violet, shared with the twin mascot */
+  --diamond-soft: rgba(155, 140, 255, .14);
   --spark: #ffb547;      /* warm second voice: the boy */
   --display: "Bricolage Grotesque", "Space Grotesk", system-ui, sans-serif;
   --body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;

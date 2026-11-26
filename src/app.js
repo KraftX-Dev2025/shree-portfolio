@@ -18,7 +18,8 @@ if (window.VENTURES) {
     [V.filter((v) => v.type === "client").length, "Client builds", "projects.html"],
     [250, "People held 19 min on stage", ""]
   ];
-  $("#proof").innerHTML = stats.map(([n, l, h]) => h ? `<a href="${h}"><b>${n}</b><span>${l}</span></a>` : `<div><b>${n}</b><span>${l}</span></div>`).join("");
+  const bar = (n) => { const w = Math.max(1, Math.round(Math.min(1, n / 54) * 14)); return `<i aria-hidden="true">${"█".repeat(w)}${"░".repeat(14 - w)}</i>`; };
+  $("#proof").innerHTML = stats.map(([n, l, h]) => h ? `<a href="${h}"><b>${n}</b>${bar(n)}<span>${l}</span></a>` : `<div><b>${n}</b>${bar(n === 250 ? 19 : n)}<span>${l}</span></div>`).join("");
 }
 
 if (S.showreel) {
@@ -39,12 +40,12 @@ if (S.showreel) {
   const frame = (t) => {
     x.fillStyle = "#07080c"; x.fillRect(0, 0, W, H);
     const g = x.createRadialGradient(W * .7 + Math.sin(t / 4000) * 120, H * .35, 10, W * .7, H * .35, W * .6);
-    g.addColorStop(0, "rgba(90,169,255,.16)"); g.addColorStop(1, "rgba(7,8,12,0)");
+    g.addColorStop(0, "rgba(155,140,255,.16)"); g.addColorStop(1, "rgba(7,8,12,0)");
     x.fillStyle = g; x.fillRect(0, 0, W, H);
     for (const p of parts) {
       p.y -= p.z * .4; p.r += .01 * p.z; if (p.y < -10) { p.y = H + 10; p.x = Math.random() * W; }
       x.save(); x.translate(p.x, p.y); x.rotate(Math.PI / 4 + Math.sin(p.r) * .3);
-      x.fillStyle = `rgba(90,169,255,${.08 + p.z * .3})`; const s = 1.5 + p.z * 3; x.fillRect(-s / 2, -s / 2, s, s); x.restore();
+      x.fillStyle = `rgba(155,140,255,${.08 + p.z * .3})`; const s = 1.5 + p.z * 3; x.fillRect(-s / 2, -s / 2, s, s); x.restore();
     }
     if (!reduce) requestAnimationFrame(frame);
   };
@@ -99,11 +100,11 @@ if (S.showreel) {
     for (const id of vis) { const n = byId[id]; if (!n.parent || !vis.has(n.parent)) continue;
       const [x1, y1] = toScreen(n), [x2, y2] = toScreen(byId[n.parent]);
       const lit = sel === id || sel === n.parent || hover === id;
-      ctx.strokeStyle = lit ? "rgba(90,169,255,.6)" : "rgba(141,145,164,.16)"; ctx.beginPath(); ctx.moveTo(x1, y1); ctx.lineTo(x2, y2); ctx.stroke(); }
+      ctx.strokeStyle = lit ? "rgba(155,140,255,.6)" : "rgba(141,145,164,.16)"; ctx.beginPath(); ctx.moveTo(x1, y1); ctx.lineTo(x2, y2); ctx.stroke(); }
     for (const id of vis) {
       const n = byId[id], [x, y] = toScreen(n), r = rad(n) * Math.sqrt(cam.k), has = !!kids[id], isOpen = open.has(id);
-      if (has && !isOpen) { ctx.strokeStyle = "rgba(90,169,255,.35)"; ctx.beginPath(); ctx.arc(x, y, r + 5, 0, 7); ctx.stroke(); }
-      ctx.fillStyle = n.depth === 0 ? "#eeeae2" : has ? "#5aa9ff" : "#8d91a4";
+      if (has && !isOpen) { ctx.strokeStyle = "rgba(155,140,255,.35)"; ctx.beginPath(); ctx.arc(x, y, r + 5, 0, 7); ctx.stroke(); }
+      ctx.fillStyle = n.depth === 0 ? "#eeeae2" : has ? "#9b8cff" : "#8d91a4";
       ctx.beginPath(); ctx.arc(x, y, r, 0, 7); ctx.fill();
       if (sel === id || hover === id) { ctx.strokeStyle = "#eeeae2"; ctx.lineWidth = 1; ctx.beginPath(); ctx.arc(x, y, r + 4, 0, 7); ctx.stroke(); ctx.lineWidth = 1; }
       const fs = n.depth === 0 ? 15 : n.depth === 1 ? 13 : 11;
@@ -140,7 +141,7 @@ if (S.showreel) {
   /* Characters are drawn in the Hyperassistant mascot language: soft gradient squircles, glossy white eyes,
      thick rounded brows and mouth lines, a violet glow. No outlines, no stick limbs. */
   const INK = "#1a1033";
-  const shirts = ["#ddd7cb","#ddd7cb","#ddd7cb","#ddd7cb","#ddd7cb","#ddd7cb","#ddd7cb","#ddd7cb","#ddd7cb","#ddd7cb","#5aa9ff"];
+  const shirts = ["#ddd7cb","#ddd7cb","#ddd7cb","#ddd7cb","#ddd7cb","#ddd7cb","#ddd7cb","#ddd7cb","#ddd7cb","#ddd7cb","#9b8cff"];
   const tint = (hex, k) => { const n = parseInt(hex.slice(1), 16), f = (c) => Math.max(0, Math.min(255, Math.round(c + (k > 0 ? (255 - c) * k : c * k)))); return "#" + [f(n >> 16), f((n >> 8) & 255), f(n & 255)].map((v) => v.toString(16).padStart(2, "0")).join(""); };
   /* mascot eye: white almond, dark pupil, glossy highlight; lid = how far a lid drops over the top (0 = open) */
   const eye = (x, y, o = {}) => { const rx = o.rx || 9.5, ry = o.ry || 10.5, pr = o.pr || 5.4, dx = o.dx || 0;
@@ -163,25 +164,25 @@ if (S.showreel) {
       <rect x="668" y="250" width="4" height="190" fill="#8d91a4"/><path d="M672 254 h86 l-14 18 l14 18 h-86 z" fill="#3aa37a"/><text x="680" y="276" font-family="JetBrains Mono" font-size="11" fill="#07080c" font-weight="600">TECH FEST</text>`,
     robocon: `<g transform="translate(640 0)"><rect x="0" y="380" width="110" height="44" rx="6" fill="#3a3f55"/><circle cx="20" cy="428" r="13" fill="#111"/><circle cx="90" cy="428" r="13" fill="#111"/>
       <rect x="70" y="300" width="10" height="84" fill="#d98c2b"/><rect x="40" y="296" width="60" height="10" fill="#d98c2b" transform="rotate(-18 75 300)"/><path d="M36 300 l-12 -8 m12 18 l-12 6" stroke="#eeeae2" stroke-width="4"/>
-      <circle cx="30" cy="395" r="5" fill="#5aa9ff" class="blink"/><text x="10" y="372" font-family="JetBrains Mono" font-size="10" fill="#8d91a4">ROBOCON '19</text></g>
+      <circle cx="30" cy="395" r="5" fill="#9b8cff" class="blink"/><text x="10" y="372" font-family="JetBrains Mono" font-size="10" fill="#8d91a4">ROBOCON '19</text></g>
       <g class="spark"><path d="M612 395 l-10 -8 m10 14 l-14 2 m14 4 l-8 10" stroke="#ffb547" stroke-width="2"/></g>`,
-    gym: `<g><rect x="630" y="410" width="96" height="30" rx="4" fill="#20232f"/><text x="678" y="430" text-anchor="middle" font-family="JetBrains Mono" font-size="11" fill="#5aa9ff">LOCKDOWN PR</text></g>
+    gym: `<g><rect x="630" y="410" width="96" height="30" rx="4" fill="#20232f"/><text x="678" y="430" text-anchor="middle" font-family="JetBrains Mono" font-size="11" fill="#9b8cff">LOCKDOWN PR</text></g>
       <rect x="600" y="424" width="16" height="16" rx="3" fill="#3a3f55"/><rect x="742" y="418" width="22" height="22" rx="3" fill="#3a3f55"/>`,
     corporate: `<g transform="translate(600 0)"><path d="M0 425 q4 -34 40 -38 l30 -24 h70 l34 26 q30 4 32 36 z" fill="#c9c6bf"/><path d="M78 368 h56 l24 20 h-100 z" fill="#20232f"/>
       <circle cx="44" cy="428" r="16" fill="#111" stroke="#8d91a4" stroke-width="4"/><circle cx="168" cy="428" r="16" fill="#111" stroke="#8d91a4" stroke-width="4"/></g>
       <text x="610" y="345" font-family="JetBrains Mono" font-size="10" fill="#8d91a4">09:00 → 18:00</text>`,
-    leap: `<rect x="696" y="300" width="6" height="140" fill="#8d91a4"/><rect x="630" y="290" width="140" height="58" rx="6" fill="#5aa9ff"/>
+    leap: `<rect x="696" y="300" width="6" height="140" fill="#8d91a4"/><rect x="630" y="290" width="140" height="58" rx="6" fill="#9b8cff"/>
       <text x="700" y="316" text-anchor="middle" font-family="Bricolage Grotesque" font-weight="800" font-size="20" fill="#07080c">KRAFTX</text><text x="700" y="336" text-anchor="middle" font-family="JetBrains Mono" font-size="10" fill="#07080c">OPEN · CLIENT 1 OF 5</text>
-      <g class="spark"><rect x="560" y="200" width="6" height="6" fill="#ffb547"/><rect x="430" y="170" width="6" height="6" fill="#e85d5d"/><rect x="600" y="150" width="6" height="6" fill="#5aa9ff"/></g>`,
-    juggle: `<g class="spin" style="transform-origin:500px 120px">${["KX", "HC", "FT", "EA"].map((t, i) => { const a = i * Math.PI / 2, x = 500 + Math.cos(a) * 80 - 20, y = 120 + Math.sin(a) * 40 - 14; return `<g><rect x="${x}" y="${y}" width="40" height="28" rx="4" fill="${["#5aa9ff", "#ffb547", "#e85d5d", "#3aa37a"][i]}"/><text x="${x + 20}" y="${y + 19}" text-anchor="middle" font-family="JetBrains Mono" font-weight="600" font-size="12" fill="#07080c">${t}</text></g>`; }).join("")}</g>`,
+      <g class="spark"><rect x="560" y="200" width="6" height="6" fill="#ffb547"/><rect x="430" y="170" width="6" height="6" fill="#e85d5d"/><rect x="600" y="150" width="6" height="6" fill="#9b8cff"/></g>`,
+    juggle: `<g class="spin" style="transform-origin:500px 120px">${["KX", "HC", "FT", "EA"].map((t, i) => { const a = i * Math.PI / 2, x = 500 + Math.cos(a) * 80 - 20, y = 120 + Math.sin(a) * 40 - 14; return `<g><rect x="${x}" y="${y}" width="40" height="28" rx="4" fill="${["#9b8cff", "#ffb547", "#e85d5d", "#3aa37a"][i]}"/><text x="${x + 20}" y="${y + 19}" text-anchor="middle" font-family="JetBrains Mono" font-weight="600" font-size="12" fill="#07080c">${t}</text></g>`; }).join("")}</g>`,
     content: `<path d="M680 440 l20 -120 l20 120 M700 320 v120" stroke="#8d91a4" stroke-width="3" fill="none"/><circle cx="700" cy="280" r="44" fill="none" stroke="#eeeae2" stroke-width="8" class="glow"/>
       <rect x="690" y="262" width="20" height="36" rx="3" fill="#20232f"/><circle cx="722" cy="236" r="5" fill="#ff4d4d" class="blink"/><text x="732" y="240" font-family="JetBrains Mono" font-size="10" fill="#ff4d4d">REC</text>
       <g transform="rotate(-20 620 420)"><ellipse cx="620" cy="404" rx="16" ry="20" fill="#3aa37a"/><rect x="617" y="422" width="6" height="18" fill="#eeeae2"/></g>`,
     standup: `<polygon points="470,0 530,0 640,440 360,440" fill="url(#spot)"/><path d="M590 440 v-120 m-14 120 h28" stroke="#8d91a4" stroke-width="3"/>
       <g class="sway">${Array.from({ length: 16 }, (_, i) => `<circle cx="${30 + i * 50}" cy="${505 + (i % 2) * 8}" r="16" fill="#151826"/><rect x="${12 + i * 50}" y="${518 + (i % 2) * 8}" width="36" height="30" rx="12" fill="#151826"/>`).join("")}</g>
       <text x="640" y="250" font-family="JetBrains Mono" font-size="11" fill="#8d91a4">250 PEOPLE · 19 MIN</text>`,
-    twin: `<path d="M500 240 C 400 120, 260 160, 150 290" stroke="#5aa9ff" stroke-width="2" stroke-dasharray="4 8" fill="none" class="glow"/>
-      <g class="bob"><rect x="140" y="220" width="20" height="20" fill="#5aa9ff" transform="rotate(45 150 230)"/></g>`
+    twin: `<path d="M500 240 C 400 120, 260 160, 150 290" stroke="#9b8cff" stroke-width="2" stroke-dasharray="4 8" fill="none" class="glow"/>
+      <g class="bob"><rect x="140" y="220" width="20" height="20" fill="#9b8cff" transform="rotate(45 150 230)"/></g>`
   };
   const handR = {
     origami: `<rect x="30" y="-4" width="16" height="16" fill="#eeeae2" transform="rotate(20 38 4)"/>`,
@@ -204,10 +205,10 @@ if (S.showreel) {
     proud: eye(L, EY, { lid: 10 }) + eye(R, EY, { lid: 10 }) + brow(-25, -128, -7, -123) + brow(7, -123, 25, -128) + line(`M-16 ${MY - 3} q16 11 32 0`),
     shock: eye(L, EY, { rx: 11, ry: 12, pr: 3.6 }) + eye(R, EY, { rx: 11, ry: 12, pr: 3.6 }) + brow(-25, -132, -9, -135, 3.5) + brow(9, -135, 25, -132, 3.5) + `<ellipse cx="0" cy="${MY + 3}" rx="6" ry="8" fill="#3b1446"/>`,
     bored: eye(L, EY, { lid: 11 }) + eye(R, EY, { lid: 11 }) + brow(-24, -124, -8, -124) + brow(8, -124, 24, -124) + line(`M-9 ${MY + 1} h18`),
-    nervous: eye(L, EY, { dx: -3 }) + eye(R, EY, { dx: -3 }) + brow(-24, -125, -8, -130) + brow(8, -130, 24, -125) + line(`M-12 ${MY + 1} q3 -4 6 0 t6 0 t6 0 t6 0`, 3) + `<path d="M31 -128 q5 8 0 11 q-5 -3 0 -11" fill="#5aa9ff"/>`,
+    nervous: eye(L, EY, { dx: -3 }) + eye(R, EY, { dx: -3 }) + brow(-24, -125, -8, -130) + brow(8, -130, 24, -125) + line(`M-12 ${MY + 1} q3 -4 6 0 t6 0 t6 0 t6 0`, 3) + `<path d="M31 -128 q5 8 0 11 q-5 -3 0 -11" fill="#9b8cff"/>`,
     dizzy: line(`M${L - 6} ${EY - 6} l12 12 m0 -12 l-12 12 M${R - 6} ${EY - 6} l12 12 m0 -12 l-12 12`, 3.6) + line(`M-12 ${MY + 1} q3 -4 6 0 t6 0 t6 0 t6 0`, 3),
     cheer: arcEye(L, EY) + arcEye(R, EY) + openMouth(MY - 4, 11, 13),
-    laugh: arcEye(L, EY, false) + arcEye(R, EY, false) + openMouth(MY - 5, 13, 15) + `<path d="M-30 -110 q-4 8 0 11" stroke="#5aa9ff" stroke-width="3" stroke-linecap="round" fill="none"/><path d="M30 -110 q4 8 0 11" stroke="#5aa9ff" stroke-width="3" stroke-linecap="round" fill="none"/>`,
+    laugh: arcEye(L, EY, false) + arcEye(R, EY, false) + openMouth(MY - 5, 13, 15) + `<path d="M-30 -110 q-4 8 0 11" stroke="#9b8cff" stroke-width="3" stroke-linecap="round" fill="none"/><path d="M30 -110 q4 8 0 11" stroke="#9b8cff" stroke-width="3" stroke-linecap="round" fill="none"/>`,
     wink: arcEye(L, EY) + eye(R, EY) + brow(8, -129, 24, -126) + line(`M-14 ${MY - 3} q14 11 28 0`)
   };
   const boyArms = { cheer: [140, -140], laugh: [40, -40], wonder: [130, -130], bored: [10, -120], nervous: [20, -20], dizzy: [90, -90], wink: [10, -130] };
@@ -222,7 +223,7 @@ if (S.showreel) {
     <linearGradient id="gHair" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3a2a2a"/><stop offset="1" stop-color="#140d0d"/></linearGradient>
     <linearGradient id="gCrate" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7a5636"/><stop offset="1" stop-color="#4a321d"/></linearGradient>
     <radialGradient id="gGlow"><stop offset="0" stop-color="#8b5cf6" stop-opacity=".55"/><stop offset="1" stop-color="#8b5cf6" stop-opacity="0"/></radialGradient>
-    <radialGradient id="gGlowB"><stop offset="0" stop-color="#5aa9ff" stop-opacity=".22"/><stop offset="1" stop-color="#5aa9ff" stop-opacity="0"/></radialGradient>
+    <radialGradient id="gGlowB"><stop offset="0" stop-color="#9b8cff" stop-opacity=".22"/><stop offset="1" stop-color="#9b8cff" stop-opacity="0"/></radialGradient>
   </defs>
   <text id="bgYear" x="440" y="300" text-anchor="middle" font-family="Bricolage Grotesque" font-weight="500" font-size="190" fill="#0c0e15"></text>
   <line x1="0" y1="440" x2="800" y2="440" stroke="#252839" stroke-width="2"/>
@@ -235,7 +236,7 @@ if (S.showreel) {
     <g class="arm" id="aL"><g id="aLi" style="transform-box:fill-box;transform-origin:50% 0"><rect x="-55" y="-184" width="24" height="86" rx="12" fill="url(#gShirt)"/><circle cx="-43" cy="-96" r="12" fill="url(#gSkin)"/></g></g>
     <rect x="-40" y="-194" width="80" height="112" rx="36" fill="url(#gShirt)"/>
     <path d="M-28 -176 q10 -10 26 -12" stroke="#fff" stroke-opacity=".35" stroke-width="5" stroke-linecap="round" fill="none"/>
-    <g class="prop" data-act="corporate"><path d="M0 -190 l-7 8 l7 50 l7 -50 z" fill="#5aa9ff"/></g>
+    <g class="prop" data-act="corporate"><path d="M0 -190 l-7 8 l7 50 l7 -50 z" fill="#9b8cff"/></g>
     <rect x="-10" y="-206" width="20" height="18" rx="6" fill="url(#gSkin)"/>
     <rect x="-34" y="-262" width="68" height="64" rx="28" fill="url(#gSkin)"/>
     <path id="hair" d="M-34 -232 q-2 -32 34 -32 q36 0 34 32 q-8 -15 -34 -16 q-26 1 -34 16z" fill="url(#gHair)"/>
@@ -255,12 +256,14 @@ if (S.showreel) {
     <ellipse cx="-15" cy="-52" rx="11" ry="7" fill="#7d55e6"/><ellipse cx="15" cy="-52" rx="11" ry="7" fill="#7d55e6"/>
     <rect x="-42" y="-152" width="84" height="102" rx="40" fill="url(#gBlob)"/>
     <path d="M-28 -136 q10 -10 24 -10" stroke="#fff" stroke-opacity=".45" stroke-width="5" stroke-linecap="round" fill="none"/>
-    <rect x="-4.5" y="-70" width="9" height="9" fill="#5aa9ff" transform="rotate(45 0 -65.5)" class="glow"/>
+    <rect x="-4.5" y="-70" width="9" height="9" fill="#9b8cff" transform="rotate(45 0 -65.5)" class="glow"/>
     <g id="bFace"></g>
     <g fill="none" stroke="${INK}" stroke-width="2.2" opacity=".85"><rect x="-28" y="-125" width="26" height="25" rx="10"/><rect x="2" y="-125" width="26" height="25" rx="10"/><path d="M-2 -113 h4"/></g>
   </g>`;
 
   const card = $("#card"), bubble = $("#bubble");
+  const hash = (t) => { let h = 5381; for (const ch of t) h = ((h << 5) + h + ch.charCodeAt(0)) >>> 0; return h.toString(16).slice(0, 7); };
+  if ($("#glog")) $("#glog").innerHTML = CH.map((c) => `<li><span class="h">${hash(c.title)}</span> <span class="y">${c.years.slice(0, 4)}</span> ${c.title}</li>`).join("");
   const scroller = $("#scroller");
   scroller.style.height = `calc(${CH.length * 60}vh + 100vh)`;
   let cur = -1;
@@ -285,6 +288,7 @@ if (S.showreel) {
     const [bl, br] = boyArms[c.boy.face] || [12, -12];
     setArm($("#bL"), bl); setArm($("#bR"), br);
     $("#twin-cta").classList.toggle("show", c.act === "twin");
+    document.querySelectorAll("#glog li").forEach((li, k) => li.classList.toggle("on", k === i));
   };
   const onScroll = () => {
     const r = scroller.getBoundingClientRect(), span = scroller.offsetHeight - innerHeight;

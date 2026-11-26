@@ -4,7 +4,7 @@
   const btn = document.getElementById("mem-dl");
   if (!btn) return;
   const P = window.PERSONA, S = window.SITE || {};
-  const C = { ink: "#07080c", line: "#252839", paper: "#eeeae2", mute: "#8d91a4", blue: "#5aa9ff", violet: "#b48ff0", deep: "#1a1033" };
+  const C = { ink: "#07080c", line: "#252839", paper: "#eeeae2", mute: "#8d91a4", blue: "#9b8cff", violet: "#b48ff0", deep: "#1a1033" };
   const DISPLAY = '"Bricolage Grotesque", "Space Grotesk", system-ui, sans-serif';
   const BODY = '"Inter", system-ui, sans-serif';
   const MONO = '"JetBrains Mono", ui-monospace, Menlo, monospace';

@@ -14,7 +14,7 @@ body { display: flex; flex-direction: column; overflow: hidden; }
 #layer { position: absolute; left: 0; top: 0; transform-origin: 0 0; }
 #wires { position: absolute; left: -2000px; top: -2000px; width: 6000px; height: 6000px; overflow: visible; pointer-events: none; }
 #wires path { fill: none; stroke-width: 1; pointer-events: stroke; }
-#wires path.seed { stroke: rgba(90,169,255,.4); }
+#wires path.seed { stroke: rgba(155,140,255,.4); }
 #wires path.mine { stroke: var(--spark); stroke-dasharray: 4 5; cursor: pointer; stroke-width: 1.2; }
 #wires path.live { stroke: var(--spark); stroke-dasharray: 3 5; }
 .cl { position: absolute; font: 400 12px/1 var(--mono); letter-spacing: .16em; text-transform: uppercase; color: var(--mute); white-space: nowrap; pointer-events: none; }
@@ -39,7 +39,7 @@ body { display: flex; flex-direction: column; overflow: hidden; }
 .note:hover .x { opacity: 1; }
 .note.target { border-color: var(--diamond); }
 @media (hover: none) { .note .pl, .note .h, .note .x { opacity: .7; } }
-.c-ai { --dot: #5aa9ff; } .c-stage { --dot: #ffb547; } .c-build { --dot: #7fcf9f; } .c-self { --dot: #e48a8a; } .c-life { --dot: #a99be6; } .c-you { --dot: var(--spark); }
+.c-ai { --dot: #9b8cff; } .c-stage { --dot: #ffb547; } .c-build { --dot: #7fcf9f; } .c-self { --dot: #e48a8a; } .c-life { --dot: #a99be6; } .c-you { --dot: var(--spark); }
 
 /* canvas chrome */
 .title { position: absolute; left: max(24px, env(safe-area-inset-left, 0px)); top: 28px; display: grid; gap: 8px; pointer-events: none; max-width: 420px; }
@@ -60,6 +60,7 @@ dialog textarea:focus, dialog input:focus { outline: none; border-color: var(--d
 .toast.on { opacity: 1; }
 @media (max-width: 600px) { .title { top: 18px; right: 24px; } .title p { font-size: 14px; } .toast { left: 24px; right: auto; bottom: 64px; } }
 </style>
+<link rel="stylesheet" href="blend.css">
 
 <nav class="nav" aria-label="Main">
   <div class="wrap">
@@ -103,4 +104,5 @@ dialog textarea:focus, dialog input:focus { outline: none; border-color: var(--d
 
 <script src="data.js"></script>
 <script src="whiteboard.js"></script>
+<script src="blend.js"></script>
 <script src="buddy.js"></script>

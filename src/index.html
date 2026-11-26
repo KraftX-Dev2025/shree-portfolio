@@ -153,6 +153,7 @@ footer .wrap { padding-block: 32px; display: flex; justify-content: space-betwee
 .twin-note { margin: 0; padding: 10px 16px; font: 12px/1.5 var(--mono); color: var(--spark); border-bottom: 1px solid var(--line); }
 .twin-note a { color: inherit; }
 </style>
+<link rel="stylesheet" href="blend.css">
 
 <nav class="nav" aria-label="Main">
   <div class="wrap">
@@ -171,6 +172,7 @@ footer .wrap { padding-block: 32px; display: flex; justify-content: space-betwee
   <canvas id="reel" aria-hidden="true"></canvas>
   <div class="shade"></div>
   <div class="wrap">
+    <p class="cmd" aria-hidden="true"><span class="p">shree@kraftx:~$</span> <span id="wtype" data-type="whoami"></span><span class="caret"></span></p>
     <h1>Shree<span>.</span></h1>
     <div class="row">
       <div class="tag-wrap"><span class="eyebrow" id="hero-eyebrow">Founder · KraftX · Hypercurated</span><p class="tag" id="tagline"></p></div>
@@ -181,7 +183,7 @@ footer .wrap { padding-block: 32px; display: flex; justify-content: space-betwee
 </header>
 
 <section class="proof" aria-label="At a glance">
-  <div class="wrap"><div class="proof-row" id="proof"></div></div>
+  <div class="wrap"><div class="term" data-title="./stats --since 2023"><div class="proof-row" id="proof"></div></div></div>
 </section>
 
 <section id="work">
@@ -189,8 +191,9 @@ footer .wrap { padding-block: 32px; display: flex; justify-content: space-betwee
     <div class="sec-head">
       <span class="eyebrow">Work</span>
       <h2>Selected work.</h2>
+      <div class="view" role="group" aria-label="Layout"><button type="button" data-v="grid" aria-pressed="true">grid</button><button type="button" data-v="ls" aria-pressed="false">ls -l</button></div>
     </div>
-    <div class="proj" id="proj"></div>
+    <div class="term" data-title="~/projects --featured"><div class="proj" id="proj"></div></div>
     <div style="margin-top:40px"><a class="btn primary" href="projects.html">All projects, by industry →</a></div>
   </div>
 </section>
@@ -210,6 +213,7 @@ footer .wrap { padding-block: 32px; display: flex; justify-content: space-betwee
         <h3 class="fade" id="c-title"></h3>
         <p class="fade" id="c-diary"></p>
         <a class="btn primary twin-cta" id="twin-cta" href="#twin">Ask the twin →</a>
+        <ol class="glog" id="glog" aria-label="Chapter index"></ol>
       </div>
       <div class="scene">
         <svg id="scene" viewBox="0 0 800 540" role="img" aria-label="An illustrated character doing life activities while a small boy watches"></svg>
@@ -249,8 +253,12 @@ footer .wrap { padding-block: 32px; display: flex; justify-content: space-betwee
       <span class="eyebrow">Digital twin</span>
       <h2>Ask the <span>twin</span>.</h2>
       <p class="lede">He knows the stories, the companies and the stand-up material. Ask what you'd ask me.</p>
+      <div class="core"><canvas id="sphere" aria-hidden="true"></canvas><pre class="core-meta">ashwathhama.core
+model ...... claude · guarded
+memory ..... <span id="nodeCount">--</span> nodes
+mood ....... dry</pre></div>
     </div>
-    <div class="chat">
+    <div class="chat term" data-title="twin@shree">
       <header><div class="av">S</div><div><strong>Shree's twin</strong><small id="twin-status">online</small></div></header>
       <p class="twin-note" id="twin-note" hidden>Dupari 1 te 4 twin jhopla aahe. Urgent asel tar <a href="whiteboard.html">Thoughts</a> var lihun theva.</p>
       <div class="log" id="log" aria-live="polite"></div>
@@ -281,7 +289,7 @@ footer .wrap { padding-block: 32px; display: flex; justify-content: space-betwee
 
 <section class="pati-band" aria-label="Puneri pati">
   <div class="wrap">
-    <figure class="pati">
+    <figure class="pati term" data-title="/etc/motd">
       <figcaption>कृपया नोंद घ्यावी</figcaption>
       <ol>
         <li>Fakt "Hi, let's connect" asa message pathvu naye. Kaam asel tar seedha sanga.</li>
@@ -294,10 +302,11 @@ footer .wrap { padding-block: 32px; display: flex; justify-content: space-betwee
   </div>
 </section>
 
-<footer><div class="wrap"><span>© 2026 Shree</span><span id="socials"></span></div></footer>
+<footer class="vim"><div class="wrap"><span class="mode">NORMAL</span><span>index</span><span class="dim hide-s">utf-8 · unix</span><span class="grow"></span><span class="hide-s">54 products · 10 industries</span><span id="socials"></span><span>© 2026 Shree</span></div></footer>
 
 <script src="data.js"></script>
 <script src="ventures.js"></script>
 <script src="app.js"></script>
 <script src="memory-card.js"></script>
+<script src="blend.js"></script>
 <script src="buddy.js"></script>

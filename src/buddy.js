@@ -63,14 +63,14 @@
   #bd-log { flex: 1; overflow-y: auto; padding: 14px; display: flex; flex-direction: column; gap: 8px; }
   #bd-log .m { max-width: 85%; padding: 9px 12px; border-radius: 14px; font: 14px/1.45 var(--body, system-ui); }
   #bd-log .t { background: #181b27; align-self: flex-start; border-bottom-left-radius: 4px; }
-  #bd-log .u { background: var(--diamond, #5aa9ff); color: var(--ink, #07080c); align-self: flex-end; border-bottom-right-radius: 4px; }
+  #bd-log .u { background: var(--diamond, #9b8cff); color: var(--ink, #07080c); align-self: flex-end; border-bottom-right-radius: 4px; }
   #bd-chips { display: flex; flex-wrap: wrap; gap: 6px; padding: 0 14px 10px; }
   #bd-chips button { font: 11px var(--mono, monospace); color: var(--mute, #8d91a4); background: none; border: 1px solid var(--line, #252839); border-radius: 999px; padding: 6px 10px; cursor: pointer; }
   #bd-chips button:hover { color: var(--paper, #eeeae2); border-color: #3a3e55; }
   #bd-form { display: flex; gap: 8px; padding: 10px 12px 12px; border-top: 1px solid var(--line, #252839); }
   #bd-form input { flex: 1; min-width: 0; background: var(--ink, #07080c); color: var(--paper, #eeeae2); border: 1px solid var(--line, #252839); border-radius: 999px; padding: 10px 14px; font: 14px var(--body, system-ui); }
-  #bd-form input:focus { outline: none; border-color: var(--diamond, #5aa9ff); }
-  #bd-form button { background: var(--diamond, #5aa9ff); color: var(--ink, #07080c); border: 0; border-radius: 999px; padding: 0 16px; font: 600 13px var(--body, system-ui); cursor: pointer; }
+  #bd-form input:focus { outline: none; border-color: var(--diamond, #9b8cff); }
+  #bd-form button { background: var(--diamond, #9b8cff); color: var(--ink, #07080c); border: 0; border-radius: 999px; padding: 0 16px; font: 600 13px var(--body, system-ui); cursor: pointer; }
   #bd-dismiss { color: var(--mute, #8d91a4); }
   #bd-back { position: fixed; z-index: 2147483000; right: max(16px, env(safe-area-inset-right, 0px)); bottom: max(16px, calc(env(safe-area-inset-bottom, 0px) + 16px)); width: 18px; height: 18px; border: 0; padding: 0; border-radius: 50%; cursor: pointer;
     background: linear-gradient(135deg, #f0d2f8, #b48ff0 55%, #7d55e6); box-shadow: 0 0 14px rgba(139,92,246,.7); display: none; }
@@ -90,7 +90,7 @@
     <ellipse cx="-15" cy="-50" rx="11" ry="7" fill="#7d55e6"/><ellipse cx="15" cy="-50" rx="11" ry="7" fill="#7d55e6"/>
     <rect x="-42" y="-152" width="84" height="102" rx="40" fill="url(#bdBlob)"/>
     <path d="M-28 -136 q10 -10 24 -10" stroke="#fff" stroke-opacity=".45" stroke-width="5" stroke-linecap="round" fill="none"/>
-    <rect x="-4.5" y="-70" width="9" height="9" fill="#5aa9ff" transform="rotate(45 0 -65.5)"/>
+    <rect x="-4.5" y="-70" width="9" height="9" fill="#9b8cff" transform="rotate(45 0 -65.5)"/>
     <g id="bd-face"></g>
     <g fill="none" stroke="${INK}" stroke-width="2.2" opacity=".85"><rect x="-28" y="-125" width="26" height="25" rx="10"/><rect x="2" y="-125" width="26" height="25" rx="10"/><path d="M-2 -113 h4"/></g>
     <g id="bd-zz" opacity="0" font-family="JetBrains Mono, monospace" font-weight="600" fill="#b48ff0"><text x="34" y="-150" font-size="14">z</text><text x="44" y="-164" font-size="18">Z</text></g>
